@@ -1,0 +1,6 @@
+[submodule "multibuild"]
+	path = multibuild
+	url = https://github.com/matthew-brett/multibuild.git
+[submodule "bezier"]
+	path = bezier
+	url = https://github.com/dhermes/bezier.git
