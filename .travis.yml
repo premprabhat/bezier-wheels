@@ -44,3 +44,6 @@ install:
 
 script:
     - install_run ${PLAT}
+
+after_success:
+    - find ${TRAVIS_BUILD_DIR}/wheelhouse/
