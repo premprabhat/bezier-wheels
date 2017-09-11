@@ -81,9 +81,6 @@ install:
     # Print some information about the Fortran compiler
     - python find_gfortran.py
 
-    # Print some information about the current filesystem
-    - python huh.py
-
 build_script:
     # Install build requirements
     - pip install --upgrade %BUILD_DEPENDS%

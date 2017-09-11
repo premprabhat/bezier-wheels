@@ -1,3 +1,5 @@
+import pprint
+
 import setup
 
 
@@ -11,9 +13,11 @@ def setup_info():
     else:
         print('f90_compiler = {}'.format(f90_compiler))
         f90_exe = f90_compiler.compiler_f90[0]
+        pprint.pprint(f90_compiler.__dict__)
         print('f90_exe      = {}'.format(f90_exe))
         c_compiler = f90_compiler.c_compiler
         print('c_compiler   = {}'.format(c_compiler))
+        pprint.pprint(c_compiler.__dict__)
 
 
 if __name__ == '__main__':
