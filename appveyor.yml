@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 0.5.0
+    BUILD_COMMIT: 1b13a00caad761eaeb0da4526085864ced5b7241
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
 
