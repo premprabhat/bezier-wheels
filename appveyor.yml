@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 3dd27a3057c9e000ed50571806de26e9a0f95cc9
+    BUILD_COMMIT: afece3a3877842c09dd30b221cddf14762b3beed
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
