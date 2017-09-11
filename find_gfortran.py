@@ -12,13 +12,27 @@ ENV_VARS = (
     'PATH',
     'PATHEXT',
 )
+TO_MATCH = (
+    'gfortran.exe',
+    'libgfortran',
+    'gfortran.lib',
+    'libgcc',
+    'gcc.lib',
+    'libmingw32',
+    'mingw32.lib',
+    'libmingwex',
+    'mingwex.lib',
+    'libmsvcr90',
+    'msvcr90.lib',
+)
 
 
-def find_gfortran(root):
+def mingw_source_find(root, to_match):
     for subdir, _, filenames in os.walk(root):
         for filename in filenames:
-            if 'gfortran' in filename.lower():
-                yield os.path.join(subdir, filename)
+            for partial in to_match:
+                if partial in filename.lower():
+                    yield os.path.join(subdir, filename)
 
 
 def which_gfortran():
@@ -41,7 +55,7 @@ def which_gfortran():
 
 def main():
     for path in PATHS:
-        for match in find_gfortran(path):
+        for match in mingw_source_find(path, TO_MATCH):
             print(match)
 
     for env_var in ENV_VARS:
