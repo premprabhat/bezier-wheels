@@ -98,4 +98,4 @@ artifacts:
     - path: "%BEZIER_JOURNAL%"
 
 on_failure:
-    - appveyor PushArtifact "%BEZIER_JOURNAL%"
+    - appveyor PushArtifact "bezier\\journal.txt"
