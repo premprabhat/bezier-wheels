@@ -5,7 +5,7 @@ environment:
     BUILD_COMMIT: e138008f9eeea5345ec972d458cb79866dc500d2
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
-    BEZIER_JOURNAL: "'C:\\projects\\bezier-wheels\\bezier\\journal.txt"
+    BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
 
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
