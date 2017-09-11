@@ -96,3 +96,6 @@ test_script:
 
 artifacts:
     - path: "%BEZIER_JOURNAL%"
+
+on_failure:
+    - appveyor PushArtifact "%BEZIER_JOURNAL%"
