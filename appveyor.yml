@@ -5,6 +5,7 @@ environment:
     BUILD_COMMIT: f7c70b4e6cd210a05c8c82d9babd2a39757b6006
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
+    BEZIER_JOURNAL: "'C:\\projects\\bezier-wheels\\bezier\\journal.txt"
 
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
@@ -71,6 +72,7 @@ install:
     # Check that we have the expected version and architecture for Python
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
+    - python -c "import os, sys; print(os.name); print(sys.platform)"
 
     # Install requirements
     - python -m pip install --upgrade pip
@@ -91,3 +93,6 @@ build_script:
 test_script:
     # "%CMD_IN_ENV% python -c \"import bezier; print(bezier._HAS_SPEEDUP)\""
     - python -c "print('Hello')"
+
+artifacts:
+    - path: "%BEZIER_JOURNAL%"
