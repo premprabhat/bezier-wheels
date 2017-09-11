@@ -80,4 +80,5 @@ build_script:
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
 
 test_script:
-    - "%CMD_IN_ENV% python -c \"import bezier; print(bezier._HAS_SPEEDUP)\""
+    # "%CMD_IN_ENV% python -c \"import bezier; print(bezier._HAS_SPEEDUP)\""
+    - python -c "print('Hello')"
