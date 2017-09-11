@@ -63,6 +63,9 @@ install:
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
 
+    # Print some information about the Fortran compiler
+    - python find_gfortran.py
+
 build_script:
     # Install build requirements
     - pip install --upgrade %BUILD_DEPENDS%
@@ -70,8 +73,6 @@ build_script:
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
-    # Print some information about the Fortran compiler
-    - python -c "from setup import get_f90_compiler; f90_compiler = get_f90_compiler(); print(f90_compiler.compiler_f90[0])"
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
 
 test_script:
