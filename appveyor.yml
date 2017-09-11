@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: e138008f9eeea5345ec972d458cb79866dc500d2
+    BUILD_COMMIT: 7bdf5bcf27f590ddcb2d114f9c0bc084c51e380c
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -102,4 +102,6 @@ artifacts:
 
 on_failure:
     # Assumes `cd %REPO_DIR%` was called.
+    # e.g. https://ci.appveyor.com/api/buildjobs/3a1mtmvgt92vdy9v/artifacts/journal.txt
+    # from https://ci.appveyor.com/project/dhermes/bezier-wheels/build/1.0.21/job/3a1mtmvgt92vdy9v
     - appveyor PushArtifact "journal.txt"

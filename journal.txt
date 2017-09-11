@@ -1,0 +1,85 @@
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\types.f90 \
+>   -o \
+>   src\bezier\types.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\helpers.f90 \
+>   -o \
+>   src\bezier\helpers.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\curve.f90 \
+>   -o \
+>   src\bezier\curve.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\surface.f90 \
+>   -o \
+>   src\bezier\surface.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\curve_intersection.f90 \
+>   -o \
+>   src\bezier\curve_intersection.o
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\lib.exe \
+>   src\bezier\types.o \
+>   src\bezier\helpers.o \
+>   src\bezier\curve.o \
+>   src\bezier\surface.o \
+>   src\bezier\curve_intersection.o \
+>   /OUT:build\lib.win32-2.7\bezier\lib\bezier.lib
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   /arch:SSE2 \
+>   -IC:\Python27\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27\include \
+>   -IC:\Python27\PC \
+>   /Tcsrc\bezier\_helpers_speedup.c \
+>   /Fobuild\temp.win32-2.7\Release\src\bezier\_helpers_speedup.obj
+----------------------------------------
