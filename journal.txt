@@ -9,15 +9,15 @@ $ cp \
 ----------------------------------------
 $ cp \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingw32.a \
->   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingw32.lib
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\mingw32.lib
 ----------------------------------------
 $ cp \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingwex.a \
->   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingwex.lib
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\mingwex.lib
 ----------------------------------------
 $ cp \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmsvcr90.a \
->   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmsvcr90.lib
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\msvcr90.lib
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
