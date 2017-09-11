@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 0.5.0
+    BUILD_COMMIT: f7c70b4e6cd210a05c8c82d9babd2a39757b6006
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
 
@@ -62,6 +62,10 @@ install:
     # Check that we have the expected version and architecture for Python
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
+
+    # Install requirements
+    - python -m pip install --upgrade pip
+    - pip install wheel
 
     # Print some information about the Fortran compiler
     - python find_gfortran.py
