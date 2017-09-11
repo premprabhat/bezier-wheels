@@ -65,7 +65,7 @@ build_script:
     - pip install --upgrade %BUILD_DEPENDS%
 
     # Print some information about the Fortran compiler
-    - python -c 'from setup import get_f90_compiler; f90_compiler = get_f90_compiler(); print(f90_compiler.compiler_f90[0])'
+    - python -c "from setup import get_f90_compiler; f90_compiler = get_f90_compiler(); print(f90_compiler.compiler_f90[0])"
 
     # build wheel:
     - cd %REPO_DIR%
