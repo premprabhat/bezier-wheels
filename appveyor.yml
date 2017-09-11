@@ -89,8 +89,11 @@ build_script:
     - pip install --upgrade %BUILD_DEPENDS%
 
     # build wheel:
+    - cp setup_info.py %REPO_DIR%
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
+    # Print some information about ``get_f90_compiler()``
+    - python setup_info.py
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
 
 test_script:
