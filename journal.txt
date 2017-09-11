@@ -3,6 +3,22 @@ $ cp \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0\libgfortran.a \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0\gfortran.lib
 ----------------------------------------
+$ cp \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0\libgcc.a \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0\gcc.lib
+----------------------------------------
+$ cp \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingw32.a \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingw32.lib
+----------------------------------------
+$ cp \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingwex.a \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingwex.lib
+----------------------------------------
+$ cp \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmsvcr90.a \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmsvcr90.lib
+----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
 >   -g \
@@ -92,6 +108,7 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /nologo \
 >   /INCREMENTAL:NO \
 >   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
 >   /LIBPATH:C:\Python27\libs \
 >   /LIBPATH:C:\Python27\PCbuild \
 >   /LIBPATH:C:\Python27\PC\VS9.0 \
