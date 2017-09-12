@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 8920bbbbb3eac5555ed2f5029bfaf2a86df5c2cb
+    BUILD_COMMIT: f70588f7ec0e8e7f2f3e17bc1148b9a76a9eed10
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -83,6 +83,9 @@ install:
 
     # Get a fully comprehensive list of libraries from MinGW
     - python find_mingw_libs.py
+
+    # Get a list of the ``gfortran`` search directories
+    - gfortran -print-search-dirs
 
 build_script:
     # Install build requirements
