@@ -81,6 +81,9 @@ install:
     # Print some information about the Fortran compiler
     - python find_gfortran.py
 
+    # Get a fully comprehensive list of libraries from MinGW
+    - python find_mingw_libs.py
+
 build_script:
     # Install build requirements
     - pip install --upgrade %BUILD_DEPENDS%
