@@ -102,9 +102,11 @@ test_script:
 
 artifacts:
     - path: "%BEZIER_JOURNAL%"
+    - path: "C:\\projects\\bezier-wheels\\bezier\\mingw_libs.txt"
 
 on_failure:
     # Assumes `cd %REPO_DIR%` was called.
     # e.g. https://ci.appveyor.com/api/buildjobs/3a1mtmvgt92vdy9v/artifacts/journal.txt
     # from https://ci.appveyor.com/project/dhermes/bezier-wheels/build/1.0.21/job/3a1mtmvgt92vdy9v
     - appveyor PushArtifact "journal.txt"
+    - appveyor PushArtifact "mingw_libs.txt"

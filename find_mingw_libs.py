@@ -18,9 +18,11 @@ def mingw_lib_find(root):
 
 
 def main():
-    for path in PATHS:
-        for match in mingw_lib_find(path):
-            print(match)
+    filename = os.path.join('bezier', 'mingw_libs.txt')
+    with open(filename, 'w') as file_obj:
+        for path in PATHS:
+            for match in mingw_lib_find(path):
+                file_obj.write(match + '\n')
 
 
 if __name__ == '__main__':
