@@ -109,5 +109,144 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   src\bezier\helpers.o \
 >   /OUT:build\lib.win32-2.7\bezier\_helpers_speedup.pyd \
 >   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.lib \
->   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.pyd.manifest
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.pyd.manifest \
+>   /FORCE
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   /arch:SSE2 \
+>   -IC:\Python27\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27\include \
+>   -IC:\Python27\PC \
+>   /Tcsrc\bezier\_curve_speedup.c \
+>   /Fobuild\temp.win32-2.7\Release\src\bezier\_curve_speedup.obj
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
+>   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:C:\Python27\libs \
+>   /LIBPATH:C:\Python27\PCbuild \
+>   /LIBPATH:C:\Python27\PC\VS9.0 \
+>   gfortran.lib \
+>   gcc.lib \
+>   mingw32.lib \
+>   mingwex.lib \
+>   pthread.lib \
+>   quadmath.lib \
+>   user32.lib \
+>   gcc_s.lib \
+>   /EXPORT:init_curve_speedup \
+>   build\temp.win32-2.7\Release\src\bezier\_curve_speedup.obj \
+>   src\bezier\types.o \
+>   src\bezier\curve.o \
+>   /OUT:build\lib.win32-2.7\bezier\_curve_speedup.pyd \
+>   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_curve_speedup.lib \
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_curve_speedup.pyd.manifest \
+>   /FORCE
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   /arch:SSE2 \
+>   -IC:\Python27\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27\include \
+>   -IC:\Python27\PC \
+>   /Tcsrc\bezier\_surface_speedup.c \
+>   /Fobuild\temp.win32-2.7\Release\src\bezier\_surface_speedup.obj
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
+>   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:C:\Python27\libs \
+>   /LIBPATH:C:\Python27\PCbuild \
+>   /LIBPATH:C:\Python27\PC\VS9.0 \
+>   gfortran.lib \
+>   gcc.lib \
+>   mingw32.lib \
+>   mingwex.lib \
+>   pthread.lib \
+>   quadmath.lib \
+>   user32.lib \
+>   gcc_s.lib \
+>   /EXPORT:init_surface_speedup \
+>   build\temp.win32-2.7\Release\src\bezier\_surface_speedup.obj \
+>   src\bezier\types.o \
+>   src\bezier\curve.o \
+>   src\bezier\surface.o \
+>   /OUT:build\lib.win32-2.7\bezier\_surface_speedup.pyd \
+>   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_surface_speedup.lib \
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_surface_speedup.pyd.manifest \
+>   /FORCE
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   /arch:SSE2 \
+>   -IC:\Python27\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27\include \
+>   -IC:\Python27\PC \
+>   /Tcsrc\bezier\_curve_intersection_speedup.c \
+>   /Fobuild\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.obj
+----------------------------------------
+$ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
+>   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
+>   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:C:\Python27\libs \
+>   /LIBPATH:C:\Python27\PCbuild \
+>   /LIBPATH:C:\Python27\PC\VS9.0 \
+>   gfortran.lib \
+>   gcc.lib \
+>   mingw32.lib \
+>   mingwex.lib \
+>   pthread.lib \
+>   quadmath.lib \
+>   user32.lib \
+>   gcc_s.lib \
+>   /EXPORT:init_curve_intersection_speedup \
+>   build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.obj \
+>   src\bezier\types.o \
+>   src\bezier\helpers.o \
+>   src\bezier\curve.o \
+>   src\bezier\curve_intersection.o \
+>   /OUT:build\lib.win32-2.7\bezier\_curve_intersection_speedup.pyd \
+>   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.lib \
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.pyd.manifest \
+>   /FORCE
 ----------------------------------------
