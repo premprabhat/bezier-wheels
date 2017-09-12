@@ -88,8 +88,12 @@ build_script:
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
 
 test_script:
-    # "%CMD_IN_ENV% python -c \"import bezier; print(bezier._HAS_SPEEDUP)\""
-    - python -c "print('Hello')"
+    - python -m virtualenv test-venv
+    - test-venv\Scripts\pip install --upgrade mock numpy pytest six enum34
+    - test-venv\Scripts\pip install --upgrade wheel
+    - test-venv\Scripts\pip install bezier --no-index --find-links dist
+    - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
+    - test-venv\Scripts\py.test bezier/tests
 
 artifacts:
     - path: "bezier\\journal.txt"
