@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 6fa8248977b7109742aee6afffdfd157d0f71254
+    BUILD_COMMIT: 868e2a5a7ed8e212286d3bc7d083a40109de5d1a
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -83,11 +83,8 @@ build_script:
     - pip install --upgrade %BUILD_DEPENDS%
 
     # build wheel:
-    - cp setup_info.py %REPO_DIR%
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
-    # Print some information about ``get_f90_compiler()``
-    - python setup_info.py
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
 
 test_script:
