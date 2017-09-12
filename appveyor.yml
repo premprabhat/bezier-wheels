@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 3fd1dd73b98b368ade80bf1b27c39a284daa3431
+    BUILD_COMMIT: 635ad03e9f654ae9cefa7d3ce5cdc75627a80801
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -93,6 +93,7 @@ test_script:
 
 artifacts:
     - path: "bezier\\journal.txt"
+    - path: "%REPO_DIR%\\dist\\*"
 
 on_failure:
     # Assumes `cd %REPO_DIR%` was called.
