@@ -15,6 +15,14 @@ $ cp \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libmingwex.a \
 >   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\mingwex.lib
 ----------------------------------------
+$ cp \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\libpthread.a \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib\pthread.lib
+----------------------------------------
+$ cp \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0\libquadmath.a \
+>   C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0\quadmath.lib
+----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
 >   -g \
@@ -112,6 +120,8 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   gcc.lib \
 >   mingw32.lib \
 >   mingwex.lib \
+>   pthread.lib \
+>   quadmath.lib \
 >   /EXPORT:init_helpers_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.obj \
 >   src\bezier\types.o \

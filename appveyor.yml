@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 653df822cbac2730c729eb5a4712c2d327332468
+    BUILD_COMMIT: 7496ac7812c7fca63cc4ae7aaef9c1d022720fd7
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -72,7 +72,7 @@ install:
     # Check that we have the expected version and architecture for Python
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
-    - python -c "import os, sys; print(os.name); print(sys.platform)"
+    - python -c "import os, sys; print(os.name); print(sys.platform); print(sys.version)"
 
     # Install requirements
     - python -m pip install --upgrade pip
