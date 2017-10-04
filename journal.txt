@@ -1,10 +1,17 @@
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
->   -g \
 >   -fno-second-underscore \
 >   -O3 \
 >   -funroll-loops \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fPIC \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -march=native \
 >   -c \
 >   -c \
 >   src\bezier\types.f90 \
@@ -13,10 +20,17 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
->   -g \
 >   -fno-second-underscore \
 >   -O3 \
 >   -funroll-loops \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fPIC \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -march=native \
 >   -c \
 >   -c \
 >   src\bezier\helpers.f90 \
@@ -25,10 +39,17 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
->   -g \
 >   -fno-second-underscore \
 >   -O3 \
 >   -funroll-loops \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fPIC \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -march=native \
 >   -c \
 >   -c \
 >   src\bezier\curve.f90 \
@@ -37,10 +58,17 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
->   -g \
 >   -fno-second-underscore \
 >   -O3 \
 >   -funroll-loops \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fPIC \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -march=native \
 >   -c \
 >   -c \
 >   src\bezier\surface.f90 \
@@ -49,17 +77,94 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
->   -g \
 >   -fno-second-underscore \
 >   -O3 \
 >   -funroll-loops \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fPIC \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -march=native \
 >   -c \
 >   -c \
 >   src\bezier\curve_intersection.f90 \
 >   -o \
 >   src\bezier\curve_intersection.o
 ----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\d1mach.f \
+>   -o \
+>   src\bezier\quadpack\d1mach.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqelg.f \
+>   -o \
+>   src\bezier\quadpack\dqelg.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqpsrt.f \
+>   -o \
+>   src\bezier\quadpack\dqpsrt.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqk21.f \
+>   -o \
+>   src\bezier\quadpack\dqk21.o
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O3 \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqagse.f \
+>   -o \
+>   src\bezier\quadpack\dqagse.o
+----------------------------------------
 $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\lib.exe \
+>   src\bezier\quadpack\d1mach.o \
+>   src\bezier\quadpack\dqelg.o \
+>   src\bezier\quadpack\dqpsrt.o \
+>   src\bezier\quadpack\dqk21.o \
+>   src\bezier\quadpack\dqagse.o \
 >   src\bezier\types.o \
 >   src\bezier\helpers.o \
 >   src\bezier\curve.o \
@@ -151,6 +256,12 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /EXPORT:init_curve_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_curve_speedup.obj \
 >   src\bezier\types.o \
+>   src\bezier\helpers.o \
+>   src\bezier\quadpack\d1mach.o \
+>   src\bezier\quadpack\dqelg.o \
+>   src\bezier\quadpack\dqpsrt.o \
+>   src\bezier\quadpack\dqk21.o \
+>   src\bezier\quadpack\dqagse.o \
 >   src\bezier\curve.o \
 >   /OUT:build\lib.win32-2.7\bezier\_curve_speedup.pyd \
 >   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_curve_speedup.lib \
@@ -196,6 +307,12 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /EXPORT:init_surface_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_surface_speedup.obj \
 >   src\bezier\types.o \
+>   src\bezier\helpers.o \
+>   src\bezier\quadpack\d1mach.o \
+>   src\bezier\quadpack\dqelg.o \
+>   src\bezier\quadpack\dqpsrt.o \
+>   src\bezier\quadpack\dqk21.o \
+>   src\bezier\quadpack\dqagse.o \
 >   src\bezier\curve.o \
 >   src\bezier\surface.o \
 >   /OUT:build\lib.win32-2.7\bezier\_surface_speedup.pyd \
@@ -243,6 +360,11 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.obj \
 >   src\bezier\types.o \
 >   src\bezier\helpers.o \
+>   src\bezier\quadpack\d1mach.o \
+>   src\bezier\quadpack\dqelg.o \
+>   src\bezier\quadpack\dqpsrt.o \
+>   src\bezier\quadpack\dqk21.o \
+>   src\bezier\quadpack\dqagse.o \
 >   src\bezier\curve.o \
 >   src\bezier\curve_intersection.o \
 >   /OUT:build\lib.win32-2.7\bezier\_curve_intersection_speedup.pyd \
