@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 1300a4f09c662570f0973c80d844cd5de6113dfd
+    BUILD_COMMIT: ed8d53d8d555716d9b54a01ed1fcfc05d27f29eb
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -94,7 +94,7 @@ test_script:
     - test-venv\Scripts\pip install --upgrade wheel
     - test-venv\Scripts\pip install bezier --no-index --find-links dist
     - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_HELPERS_SPEEDUP)"
-    - test-venv\Scripts\py.test tests
+    - test-venv\Scripts\py.test tests\unit
     - test-venv\Scripts\python -c "import bezier._curve_intersection_speedup as sp; print(sp)"
     - test-venv\Scripts\python -c "import bezier._curve_speedup as sp; print(sp)"
     - test-venv\Scripts\python -c "import bezier._helpers_speedup as sp; print(sp)"
