@@ -61,13 +61,9 @@ install:
     # the parent CMD process).
     - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
 
-    # Prepend MinGW to the PATH of this build
+    # Prepend MinGW to the PATH of this build so ``gfortran`` is visible
+    # to ``numpy.distutils``.
     - SET PATH=%MINGW%;%PATH%
-
-    # Fix MSVC builds for 64-bit Python
-    # See
-    # http://stackoverflow.com/questions/32091593/cannot-install-windows-sdk-7-1-on-windows-10
-    - echo "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 > "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\amd64\vcvars64.bat"
 
     # Check that we have the expected version and architecture for Python
     - python --version
@@ -90,7 +86,7 @@ build_script:
 test_script:
     # Assumes `cd %REPO_DIR%` was called previously.
     - python -m virtualenv test-venv
-    - test-venv\Scripts\pip install --upgrade mock numpy pytest six enum34
+    - test-venv\Scripts\pip install --upgrade --requirement ..\requirements.txt
     - test-venv\Scripts\pip install --upgrade wheel
     - test-venv\Scripts\pip install bezier --no-index --find-links dist
     - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_HELPERS_SPEEDUP)"
@@ -109,3 +105,5 @@ on_failure:
     # e.g. https://ci.appveyor.com/api/buildjobs/3a1mtmvgt92vdy9v/artifacts/journal.txt
     # from https://ci.appveyor.com/project/dhermes/bezier-wheels/build/1.0.21/job/3a1mtmvgt92vdy9v
     - appveyor PushArtifact "journal.txt"
+    - 7z a wheels.zip "dist\*.whl"
+    - appveyor PushArtifact wheels.zip
