@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 430a0b666b7ef71d06a744fcf83860cddf23c524
+    BUILD_COMMIT: 771b9fb3ad9700c78234e22419c16d66d0a47925
     BUILD_DEPENDS: "numpy>=1.9.0"
     TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
@@ -29,11 +29,11 @@ environment:
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "32"
       MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
-    - PYTHON: "C:\\Python27-x64"
+    - PYTHON: "C:\\Miniconda-x64"
       PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "64"
       MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
-    - PYTHON: "C:\\Python27"
+    - PYTHON: "C:\\Miniconda"
       PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
       MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
