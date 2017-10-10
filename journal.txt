@@ -7,7 +7,6 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wextra \
 >   -Wno-compare-reals \
 >   -Wimplicit-interface \
->   -fPIC \
 >   -fmax-errors=1 \
 >   -std=f2008 \
 >   -Werror \
@@ -16,7 +15,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\types.f90 \
 >   -o \
->   src\bezier\types.o
+>   build\temp.win32-2.7\Release\src\bezier\types.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -26,7 +27,6 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wextra \
 >   -Wno-compare-reals \
 >   -Wimplicit-interface \
->   -fPIC \
 >   -fmax-errors=1 \
 >   -std=f2008 \
 >   -Werror \
@@ -35,7 +35,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\helpers.f90 \
 >   -o \
->   src\bezier\helpers.o
+>   build\temp.win32-2.7\Release\src\bezier\helpers.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -45,7 +47,6 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wextra \
 >   -Wno-compare-reals \
 >   -Wimplicit-interface \
->   -fPIC \
 >   -fmax-errors=1 \
 >   -std=f2008 \
 >   -Werror \
@@ -54,7 +55,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\curve.f90 \
 >   -o \
->   src\bezier\curve.o
+>   build\temp.win32-2.7\Release\src\bezier\curve.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -64,7 +67,6 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wextra \
 >   -Wno-compare-reals \
 >   -Wimplicit-interface \
->   -fPIC \
 >   -fmax-errors=1 \
 >   -std=f2008 \
 >   -Werror \
@@ -73,7 +75,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\surface.f90 \
 >   -o \
->   src\bezier\surface.o
+>   build\temp.win32-2.7\Release\src\bezier\surface.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -83,7 +87,6 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wextra \
 >   -Wno-compare-reals \
 >   -Wimplicit-interface \
->   -fPIC \
 >   -fmax-errors=1 \
 >   -std=f2008 \
 >   -Werror \
@@ -92,7 +95,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\curve_intersection.f90 \
 >   -o \
->   src\bezier\curve_intersection.o
+>   build\temp.win32-2.7\Release\src\bezier\curve_intersection.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -105,7 +110,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\quadpack\d1mach.f \
 >   -o \
->   src\bezier\quadpack\d1mach.o
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\d1mach.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -118,7 +125,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\quadpack\dqelg.f \
 >   -o \
->   src\bezier\quadpack\dqelg.o
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqelg.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -131,7 +140,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\quadpack\dqpsrt.f \
 >   -o \
->   src\bezier\quadpack\dqpsrt.o
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqpsrt.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -144,7 +155,9 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\quadpack\dqk21.f \
 >   -o \
->   src\bezier\quadpack\dqk21.o
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqk21.o \
+>   -J \
+>   build\temp.win32-2.7\Release
 ----------------------------------------
 $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -Wall \
@@ -157,20 +170,31 @@ $ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
 >   -c \
 >   src\bezier\quadpack\dqagse.f \
 >   -o \
->   src\bezier\quadpack\dqagse.o
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqagse.o \
+>   -J \
+>   build\temp.win32-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin\gfortran.exe \
+>   -static \
+>   -shared \
+>   -o \
+>   build\temp.win32-2.7\Release\libbezier.dll \
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\d1mach.o \
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqelg.o \
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqpsrt.o \
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqk21.o \
+>   build\temp.win32-2.7\Release\src\bezier\quadpack\dqagse.o \
+>   build\temp.win32-2.7\Release\src\bezier\types.o \
+>   build\temp.win32-2.7\Release\src\bezier\helpers.o \
+>   build\temp.win32-2.7\Release\src\bezier\curve.o \
+>   build\temp.win32-2.7\Release\src\bezier\surface.o \
+>   build\temp.win32-2.7\Release\src\bezier\curve_intersection.o \
+>   -Wl,--output-def,build\temp.win32-2.7\Release\libbezier.def
 ----------------------------------------
 $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\lib.exe \
->   src\bezier\quadpack\d1mach.o \
->   src\bezier\quadpack\dqelg.o \
->   src\bezier\quadpack\dqpsrt.o \
->   src\bezier\quadpack\dqk21.o \
->   src\bezier\quadpack\dqagse.o \
->   src\bezier\types.o \
->   src\bezier\helpers.o \
->   src\bezier\curve.o \
->   src\bezier\surface.o \
->   src\bezier\curve_intersection.o \
->   /OUT:build\lib.win32-2.7\bezier\lib\bezier.lib
+>   /def:build\temp.win32-2.7\Release\libbezier.def \
+>   /out:build\temp.win32-2.7\Release\bezier.lib \
+>   /machine:x86
 ----------------------------------------
 $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
 >   /c \
@@ -192,30 +216,16 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /DLL \
 >   /nologo \
 >   /INCREMENTAL:NO \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
->   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:build\lib.win32-2.7\bezier\lib \
 >   /LIBPATH:C:\Python27\libs \
 >   /LIBPATH:C:\Python27\PCbuild \
 >   /LIBPATH:C:\Python27\PC\VS9.0 \
->   gfortran.lib \
->   gcc.lib \
->   mingw32.lib \
->   mingwex.lib \
->   pthread.lib \
->   quadmath.lib \
->   user32.lib \
->   gcc_s.lib \
+>   bezier.lib \
 >   /EXPORT:init_helpers_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.obj \
->   src\bezier\types.o \
->   src\bezier\helpers.o \
 >   /OUT:build\lib.win32-2.7\bezier\_helpers_speedup.pyd \
 >   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.lib \
->   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.pyd.manifest \
->   /FORCE
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_helpers_speedup.pyd.manifest
 ----------------------------------------
 $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
 >   /c \
@@ -237,36 +247,16 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /DLL \
 >   /nologo \
 >   /INCREMENTAL:NO \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
->   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:build\lib.win32-2.7\bezier\lib \
 >   /LIBPATH:C:\Python27\libs \
 >   /LIBPATH:C:\Python27\PCbuild \
 >   /LIBPATH:C:\Python27\PC\VS9.0 \
->   gfortran.lib \
->   gcc.lib \
->   mingw32.lib \
->   mingwex.lib \
->   pthread.lib \
->   quadmath.lib \
->   user32.lib \
->   gcc_s.lib \
+>   bezier.lib \
 >   /EXPORT:init_curve_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_curve_speedup.obj \
->   src\bezier\types.o \
->   src\bezier\helpers.o \
->   src\bezier\quadpack\d1mach.o \
->   src\bezier\quadpack\dqelg.o \
->   src\bezier\quadpack\dqpsrt.o \
->   src\bezier\quadpack\dqk21.o \
->   src\bezier\quadpack\dqagse.o \
->   src\bezier\curve.o \
 >   /OUT:build\lib.win32-2.7\bezier\_curve_speedup.pyd \
 >   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_curve_speedup.lib \
->   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_curve_speedup.pyd.manifest \
->   /FORCE
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_curve_speedup.pyd.manifest
 ----------------------------------------
 $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
 >   /c \
@@ -288,37 +278,16 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /DLL \
 >   /nologo \
 >   /INCREMENTAL:NO \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
->   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:build\lib.win32-2.7\bezier\lib \
 >   /LIBPATH:C:\Python27\libs \
 >   /LIBPATH:C:\Python27\PCbuild \
 >   /LIBPATH:C:\Python27\PC\VS9.0 \
->   gfortran.lib \
->   gcc.lib \
->   mingw32.lib \
->   mingwex.lib \
->   pthread.lib \
->   quadmath.lib \
->   user32.lib \
->   gcc_s.lib \
+>   bezier.lib \
 >   /EXPORT:init_surface_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_surface_speedup.obj \
->   src\bezier\types.o \
->   src\bezier\helpers.o \
->   src\bezier\quadpack\d1mach.o \
->   src\bezier\quadpack\dqelg.o \
->   src\bezier\quadpack\dqpsrt.o \
->   src\bezier\quadpack\dqk21.o \
->   src\bezier\quadpack\dqagse.o \
->   src\bezier\curve.o \
->   src\bezier\surface.o \
 >   /OUT:build\lib.win32-2.7\bezier\_surface_speedup.pyd \
 >   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_surface_speedup.lib \
->   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_surface_speedup.pyd.manifest \
->   /FORCE
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_surface_speedup.pyd.manifest
 ----------------------------------------
 $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\VC\Bin\cl.exe \
 >   /c \
@@ -340,35 +309,14 @@ $ C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Pytho
 >   /DLL \
 >   /nologo \
 >   /INCREMENTAL:NO \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\i686-w64-mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc \
->   /LIBPATH:C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\lib\gcc\i686-w64-mingw32\6.3.0 \
->   /LIBPATH:build\temp.win32-2.7\Release \
+>   /LIBPATH:build\lib.win32-2.7\bezier\lib \
 >   /LIBPATH:C:\Python27\libs \
 >   /LIBPATH:C:\Python27\PCbuild \
 >   /LIBPATH:C:\Python27\PC\VS9.0 \
->   gfortran.lib \
->   gcc.lib \
->   mingw32.lib \
->   mingwex.lib \
->   pthread.lib \
->   quadmath.lib \
->   user32.lib \
->   gcc_s.lib \
+>   bezier.lib \
 >   /EXPORT:init_curve_intersection_speedup \
 >   build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.obj \
->   src\bezier\types.o \
->   src\bezier\helpers.o \
->   src\bezier\quadpack\d1mach.o \
->   src\bezier\quadpack\dqelg.o \
->   src\bezier\quadpack\dqpsrt.o \
->   src\bezier\quadpack\dqk21.o \
->   src\bezier\quadpack\dqagse.o \
->   src\bezier\curve.o \
->   src\bezier\curve_intersection.o \
 >   /OUT:build\lib.win32-2.7\bezier\_curve_intersection_speedup.pyd \
 >   /IMPLIB:build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.lib \
->   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.pyd.manifest \
->   /FORCE
+>   /MANIFESTFILE:build\temp.win32-2.7\Release\src\bezier\_curve_intersection_speedup.pyd.manifest
 ----------------------------------------
