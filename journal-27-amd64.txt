@@ -204,10 +204,10 @@ $ cl.exe \
 >   /W3 \
 >   /GS- \
 >   /DNDEBUG \
->   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -IC:\Miniconda-x64\lib\site-packages\numpy\core\include \
 >   -Isrc\bezier\include \
->   -IC:\Python27-x64\include \
->   -IC:\Python27-x64\PC \
+>   -IC:\Miniconda-x64\include \
+>   -IC:\Miniconda-x64\PC \
 >   /Tcsrc\bezier\_helpers_speedup.c \
 >   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_helpers_speedup.obj
 ----------------------------------------
@@ -216,9 +216,9 @@ $ link.exe \
 >   /nologo \
 >   /INCREMENTAL:NO \
 >   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
->   /LIBPATH:C:\Python27-x64\libs \
->   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
->   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\libs \
+>   /LIBPATH:C:\Miniconda-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\PC\VS9.0\amd64 \
 >   bezier.lib \
 >   /EXPORT:init_helpers_speedup \
 >   build\temp.win-amd64-2.7\Release\src\bezier\_helpers_speedup.obj \
@@ -234,10 +234,10 @@ $ cl.exe \
 >   /W3 \
 >   /GS- \
 >   /DNDEBUG \
->   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -IC:\Miniconda-x64\lib\site-packages\numpy\core\include \
 >   -Isrc\bezier\include \
->   -IC:\Python27-x64\include \
->   -IC:\Python27-x64\PC \
+>   -IC:\Miniconda-x64\include \
+>   -IC:\Miniconda-x64\PC \
 >   /Tcsrc\bezier\_curve_speedup.c \
 >   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_curve_speedup.obj
 ----------------------------------------
@@ -246,9 +246,9 @@ $ link.exe \
 >   /nologo \
 >   /INCREMENTAL:NO \
 >   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
->   /LIBPATH:C:\Python27-x64\libs \
->   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
->   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\libs \
+>   /LIBPATH:C:\Miniconda-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\PC\VS9.0\amd64 \
 >   bezier.lib \
 >   /EXPORT:init_curve_speedup \
 >   build\temp.win-amd64-2.7\Release\src\bezier\_curve_speedup.obj \
@@ -264,10 +264,10 @@ $ cl.exe \
 >   /W3 \
 >   /GS- \
 >   /DNDEBUG \
->   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -IC:\Miniconda-x64\lib\site-packages\numpy\core\include \
 >   -Isrc\bezier\include \
->   -IC:\Python27-x64\include \
->   -IC:\Python27-x64\PC \
+>   -IC:\Miniconda-x64\include \
+>   -IC:\Miniconda-x64\PC \
 >   /Tcsrc\bezier\_surface_speedup.c \
 >   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_surface_speedup.obj
 ----------------------------------------
@@ -276,9 +276,9 @@ $ link.exe \
 >   /nologo \
 >   /INCREMENTAL:NO \
 >   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
->   /LIBPATH:C:\Python27-x64\libs \
->   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
->   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\libs \
+>   /LIBPATH:C:\Miniconda-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\PC\VS9.0\amd64 \
 >   bezier.lib \
 >   /EXPORT:init_surface_speedup \
 >   build\temp.win-amd64-2.7\Release\src\bezier\_surface_speedup.obj \
@@ -294,10 +294,10 @@ $ cl.exe \
 >   /W3 \
 >   /GS- \
 >   /DNDEBUG \
->   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -IC:\Miniconda-x64\lib\site-packages\numpy\core\include \
 >   -Isrc\bezier\include \
->   -IC:\Python27-x64\include \
->   -IC:\Python27-x64\PC \
+>   -IC:\Miniconda-x64\include \
+>   -IC:\Miniconda-x64\PC \
 >   /Tcsrc\bezier\_curve_intersection_speedup.c \
 >   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_curve_intersection_speedup.obj
 ----------------------------------------
@@ -306,9 +306,9 @@ $ link.exe \
 >   /nologo \
 >   /INCREMENTAL:NO \
 >   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
->   /LIBPATH:C:\Python27-x64\libs \
->   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
->   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\libs \
+>   /LIBPATH:C:\Miniconda-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Miniconda-x64\PC\VS9.0\amd64 \
 >   bezier.lib \
 >   /EXPORT:init_curve_intersection_speedup \
 >   build\temp.win-amd64-2.7\Release\src\bezier\_curve_intersection_speedup.obj \
