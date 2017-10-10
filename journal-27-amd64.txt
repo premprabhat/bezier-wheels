@@ -1,0 +1,318 @@
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -fno-second-underscore \
+>   -O0 \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -O3 \
+>   -march=native \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\types.f90 \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\types.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -fno-second-underscore \
+>   -O0 \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -O3 \
+>   -march=native \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\helpers.f90 \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\helpers.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -fno-second-underscore \
+>   -O0 \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -O3 \
+>   -march=native \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\curve.f90 \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\curve.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -fno-second-underscore \
+>   -O0 \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -O3 \
+>   -march=native \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\surface.f90 \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\surface.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -fno-second-underscore \
+>   -O0 \
+>   -Wextra \
+>   -Wno-compare-reals \
+>   -Wimplicit-interface \
+>   -fmax-errors=1 \
+>   -std=f2008 \
+>   -Werror \
+>   -O3 \
+>   -march=native \
+>   -funroll-loops \
+>   -c \
+>   -c \
+>   src\bezier\curve_intersection.f90 \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\curve_intersection.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O0 \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\d1mach.f \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\d1mach.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O0 \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqelg.f \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqelg.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O0 \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqpsrt.f \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqpsrt.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O0 \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqk21.f \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqk21.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -Wall \
+>   -g \
+>   -ffixed-form \
+>   -fno-second-underscore \
+>   -O0 \
+>   -c \
+>   -c \
+>   src\bezier\quadpack\dqagse.f \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqagse.o \
+>   -J \
+>   build\temp.win-amd64-2.7\Release
+----------------------------------------
+$ C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin\gfortran.exe \
+>   -static \
+>   -shared \
+>   -o \
+>   build\temp.win-amd64-2.7\Release\libbezier.dll \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\d1mach.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqelg.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqpsrt.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqk21.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\quadpack\dqagse.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\types.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\helpers.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\curve.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\surface.o \
+>   build\temp.win-amd64-2.7\Release\src\bezier\curve_intersection.o \
+>   -Wl,--output-def,build\temp.win-amd64-2.7\Release\libbezier.def
+----------------------------------------
+$ lib.exe \
+>   /def:build\temp.win-amd64-2.7\Release\libbezier.def \
+>   /out:build\temp.win-amd64-2.7\Release\bezier.lib \
+>   /machine:x64
+----------------------------------------
+$ cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27-x64\include \
+>   -IC:\Python27-x64\PC \
+>   /Tcsrc\bezier\_helpers_speedup.c \
+>   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_helpers_speedup.obj
+----------------------------------------
+$ link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
+>   /LIBPATH:C:\Python27-x64\libs \
+>   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   bezier.lib \
+>   /EXPORT:init_helpers_speedup \
+>   build\temp.win-amd64-2.7\Release\src\bezier\_helpers_speedup.obj \
+>   /OUT:build\lib.win-amd64-2.7\bezier\_helpers_speedup.pyd \
+>   /IMPLIB:build\temp.win-amd64-2.7\Release\src\bezier\_helpers_speedup.lib \
+>   /MANIFESTFILE:build\temp.win-amd64-2.7\Release\src\bezier\_helpers_speedup.pyd.manifest
+----------------------------------------
+$ cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27-x64\include \
+>   -IC:\Python27-x64\PC \
+>   /Tcsrc\bezier\_curve_speedup.c \
+>   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_curve_speedup.obj
+----------------------------------------
+$ link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
+>   /LIBPATH:C:\Python27-x64\libs \
+>   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   bezier.lib \
+>   /EXPORT:init_curve_speedup \
+>   build\temp.win-amd64-2.7\Release\src\bezier\_curve_speedup.obj \
+>   /OUT:build\lib.win-amd64-2.7\bezier\_curve_speedup.pyd \
+>   /IMPLIB:build\temp.win-amd64-2.7\Release\src\bezier\_curve_speedup.lib \
+>   /MANIFESTFILE:build\temp.win-amd64-2.7\Release\src\bezier\_curve_speedup.pyd.manifest
+----------------------------------------
+$ cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27-x64\include \
+>   -IC:\Python27-x64\PC \
+>   /Tcsrc\bezier\_surface_speedup.c \
+>   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_surface_speedup.obj
+----------------------------------------
+$ link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
+>   /LIBPATH:C:\Python27-x64\libs \
+>   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   bezier.lib \
+>   /EXPORT:init_surface_speedup \
+>   build\temp.win-amd64-2.7\Release\src\bezier\_surface_speedup.obj \
+>   /OUT:build\lib.win-amd64-2.7\bezier\_surface_speedup.pyd \
+>   /IMPLIB:build\temp.win-amd64-2.7\Release\src\bezier\_surface_speedup.lib \
+>   /MANIFESTFILE:build\temp.win-amd64-2.7\Release\src\bezier\_surface_speedup.pyd.manifest
+----------------------------------------
+$ cl.exe \
+>   /c \
+>   /nologo \
+>   /Ox \
+>   /MD \
+>   /W3 \
+>   /GS- \
+>   /DNDEBUG \
+>   -IC:\Python27-x64\lib\site-packages\numpy\core\include \
+>   -Isrc\bezier\include \
+>   -IC:\Python27-x64\include \
+>   -IC:\Python27-x64\PC \
+>   /Tcsrc\bezier\_curve_intersection_speedup.c \
+>   /Fobuild\temp.win-amd64-2.7\Release\src\bezier\_curve_intersection_speedup.obj
+----------------------------------------
+$ link.exe \
+>   /DLL \
+>   /nologo \
+>   /INCREMENTAL:NO \
+>   /LIBPATH:build\lib.win-amd64-2.7\bezier\lib \
+>   /LIBPATH:C:\Python27-x64\libs \
+>   /LIBPATH:C:\Python27-x64\PCbuild\amd64 \
+>   /LIBPATH:C:\Python27-x64\PC\VS9.0\amd64 \
+>   bezier.lib \
+>   /EXPORT:init_curve_intersection_speedup \
+>   build\temp.win-amd64-2.7\Release\src\bezier\_curve_intersection_speedup.obj \
+>   /OUT:build\lib.win-amd64-2.7\bezier\_curve_intersection_speedup.pyd \
+>   /IMPLIB:build\temp.win-amd64-2.7\Release\src\bezier\_curve_intersection_speedup.lib \
+>   /MANIFESTFILE:build\temp.win-amd64-2.7\Release\src\bezier\_curve_intersection_speedup.pyd.manifest
+----------------------------------------
