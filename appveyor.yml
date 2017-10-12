@@ -13,14 +13,6 @@ environment:
     CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\multibuild\\ci\\appveyor\\windows_sdk.cmd"
 
   matrix:
-    - PYTHON: "C:\\Miniconda-x64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "64"
-      MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
-    - PYTHON: "C:\\Miniconda"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "32"
-      MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
@@ -35,6 +27,14 @@ environment:
       MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
     - PYTHON: "C:\\Python36"
       PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "32"
+      MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
+    - PYTHON: "C:\\Python27-x64"
+      PYTHON_VERSION: "2.7"
+      PYTHON_ARCH: "64"
+      MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
+    - PYTHON: "C:\\Python27"
+      PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
       MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
 
@@ -65,6 +65,11 @@ install:
     # to ``numpy.distutils``.
     - SET PATH=%MINGW%;%PATH%
 
+    # Fix MSVC builds for 64-bit Python
+    # See
+    # http://stackoverflow.com/questions/32091593/cannot-install-windows-sdk-7-1-on-windows-10
+    - echo "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 > "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\amd64\vcvars64.bat"
+
     # Check that we have the expected version and architecture for Python
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
@@ -82,7 +87,20 @@ build_script:
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
+
+    # Python 2.7
+    - mkdir build\lib.win32-2.7\bezier\extra-dll
+    - mkdir build\lib.win-amd64-2.7\bezier\extra-dll
+    - copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\redist\x86\Microsoft.VC90.CRT"\*.* "build\lib.win32-2.7\bezier\extra-dll\"
+    - copy "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\redist\amd64\Microsoft.VC90.CRT"\*.* "build\lib.win-amd64-2.7\bezier\extra-dll\"
+
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
+
+    - ps: |
+        # Upload artifact to Appveyor immediately after build
+        ls dist -r | Foreach-Object {
+            appveyor PushArtifact $_.FullName
+        }
 
 test_script:
     # Assumes `cd %REPO_DIR%` was called previously.
