@@ -2,41 +2,36 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 6fb9da28e992bba0621304d1c8a8208827ea670e
+    BUILD_COMMIT: b5ed5867b3f100389a9cbe4c402b495e91ebbc82
     BUILD_DEPENDS: "numpy>=1.9.0"
-    TEST_DEPENDS: "numpy>=1.9.0 pytest six scipy"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
 
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
     # See: http://stackoverflow.com/a/13751649/163740
     CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\multibuild\\ci\\appveyor\\windows_sdk.cmd"
+    MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
+    MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   matrix:
     - PYTHON: "C:\\Python27-x64"
       PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "64"
-      MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
     - PYTHON: "C:\\Python27"
       PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
-      MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
     - PYTHON: "C:\\Python35"
       PYTHON_VERSION: "3.5"
       PYTHON_ARCH: "32"
-      MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
     - PYTHON: "C:\\Python35-x64"
       PYTHON_VERSION: "3.5"
       PYTHON_ARCH: "64"
-      MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
     - PYTHON: "C:\\Python36"
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "32"
-      MINGW: "C:\\mingw-w64\\i686-6.3.0-posix-dwarf-rt_v5-rev1\\mingw32\\bin"
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
-      MINGW: "C:\\mingw-w64\\x86_64-6.3.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.
@@ -61,9 +56,16 @@ install:
     # the parent CMD process).
     - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
 
-    # Prepend MinGW to the PATH of this build so ``gfortran`` is visible
+    # Append MinGW to the PATH of this build so ``gfortran`` is visible
     # to ``numpy.distutils``.
-    - SET PATH=%MINGW%;%PATH%
+    - ps: |
+        $PYTHON_ARCH = $env:PYTHON_ARCH
+        If ($PYTHON_ARCH -eq 32) {
+            $MINGW = $env:MINGW_32
+        } Else {
+            $MINGW = $env:MINGW_64
+        }
+        $env:Path += ";$MINGW"
 
     # Check that we have the expected version and architecture for Python
     - python --version
@@ -72,7 +74,8 @@ install:
 
     # Install requirements
     - python -m pip install --upgrade pip
-    - pip install wheel
+    # Pin wheel to 0.26 to avoid Windows ABI tag for built wheel
+    - pip install "wheel==0.26.0"
 
 build_script:
     # Install build requirements
@@ -106,12 +109,9 @@ test_script:
 
 artifacts:
     - path: "bezier\\journal.txt"
-    - path: "%REPO_DIR%\\dist\\*"
 
 on_failure:
     # Assumes `cd %REPO_DIR%` was called.
     # e.g. https://ci.appveyor.com/api/buildjobs/3a1mtmvgt92vdy9v/artifacts/journal.txt
     # from https://ci.appveyor.com/project/dhermes/bezier-wheels/build/1.0.21/job/3a1mtmvgt92vdy9v
     - appveyor PushArtifact "journal.txt"
-    - 7z a wheels.zip "dist\*.whl"
-    - appveyor PushArtifact wheels.zip
