@@ -100,12 +100,9 @@ test_script:
     - test-venv\Scripts\pip install --upgrade --requirement ..\requirements.txt
     - test-venv\Scripts\pip install --upgrade wheel
     - test-venv\Scripts\pip install bezier --no-index --find-links dist
-    - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_HELPERS_SPEEDUP)"
+    - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
     - test-venv\Scripts\py.test tests\unit
-    - test-venv\Scripts\python -c "import bezier._curve_intersection_speedup as sp; print(sp)"
-    - test-venv\Scripts\python -c "import bezier._curve_speedup as sp; print(sp)"
-    - test-venv\Scripts\python -c "import bezier._helpers_speedup as sp; print(sp)"
-    - test-venv\Scripts\python -c "import bezier._surface_speedup as sp; print(sp)"
+    - test-venv\Scripts\python -c "from bezier import _speedup; print(_speedup)"
 
 artifacts:
     - path: "bezier\\journal.txt"
