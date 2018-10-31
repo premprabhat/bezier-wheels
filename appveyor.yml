@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 35fcc89e47536ca0b1ad1745c659d05c18c6494f
+    BUILD_COMMIT: 8bd87374225cd6ebf53f6c10f594589ef33b597b
     BUILD_DEPENDS: "numpy>=1.9.0"
     BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
     BEZIER_WHEEL: "True"
@@ -15,23 +15,23 @@ environment:
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   matrix:
-    - PYTHON: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "64"
     - PYTHON: "C:\\Python27"
       PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
-    - PYTHON: "C:\\Python35"
-      PYTHON_VERSION: "3.5"
-      PYTHON_ARCH: "32"
-    - PYTHON: "C:\\Python35-x64"
-      PYTHON_VERSION: "3.5"
+    - PYTHON: "C:\\Python27-x64"
+      PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "64"
     - PYTHON: "C:\\Python36"
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "32"
     - PYTHON: "C:\\Python36-x64"
       PYTHON_VERSION: "3.6"
+      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Python37"
+      PYTHON_VERSION: "3.7"
+      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Python37-x64"
+      PYTHON_VERSION: "3.7"
       PYTHON_ARCH: "64"
 
 # We always use a 64-bit machine, but can build x86 distributions
