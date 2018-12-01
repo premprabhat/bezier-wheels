@@ -1,0 +1,49 @@
+env:
+    global:
+        - REPO_DIR=bezier
+        - BUILD_COMMIT=35fcc89e47536ca0b1ad1745c659d05c18c6494f
+        - BUILD_DEPENDS="numpy"
+        - TEST_DEPENDS="numpy scipy pytest mock"
+        - PLAT=x86_64
+        - UNICODE_WIDTH=32
+
+language: python
+# The travis Python version is unrelated to the version we build and test
+# with.  This is set with the MB_PYTHON_VERSION variable.
+python: 3.5
+sudo: required
+dist: trusty
+services: docker
+
+matrix:
+  exclude:
+    # Exclude the default Python 3.5 build
+    - python: 3.5
+  include:
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=2.7
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.5
+    - os: osx
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.6
+
+before_install:
+    - source multibuild/common_utils.sh
+    - source multibuild/travis_steps.sh
+    - before_install
+
+install:
+    - clean_code ${REPO_DIR} ${BUILD_COMMIT}
+    - build_wheel ${REPO_DIR} ${PLAT}
+
+script:
+    - install_run ${PLAT}
+
+after_success:
+    - find ${TRAVIS_BUILD_DIR}/wheelhouse/
