@@ -29,12 +29,12 @@ matrix:
       osx_image: xcode6.4
       language: generic
       env:
-        - MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_VERSION=3.6
     - os: osx
       osx_image: xcode6.4
       language: generic
       env:
-        - MB_PYTHON_VERSION=3.6
+        - MB_PYTHON_VERSION=3.7
 
 before_install:
     - source multibuild/common_utils.sh
