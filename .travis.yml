@@ -47,3 +47,6 @@ script:
 
 after_success:
     - find ${TRAVIS_BUILD_DIR}/wheelhouse/
+    - virtualenv --python=python2.7 gsutil-env
+    - gsutil-env/bin/pip install gsutil
+    - gsutil-env/bin/gsutil cp ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl gs://${GCS_BUCKET}
