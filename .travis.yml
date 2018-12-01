@@ -1,7 +1,7 @@
 env:
     global:
         - REPO_DIR=bezier
-        - BUILD_COMMIT=35fcc89e47536ca0b1ad1745c659d05c18c6494f
+        - BUILD_COMMIT=9c2c7003d64242542f931088a8646c30cc4a2caa
         - BUILD_DEPENDS="numpy"
         - TEST_DEPENDS="numpy scipy pytest mock"
         - PLAT=x86_64
