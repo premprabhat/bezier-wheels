@@ -34,6 +34,8 @@ matrix:
         - MB_PYTHON_VERSION=3.7
 
 before_install:
+    - brew cask uninstall --force oclint
+    - brew install gcc
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
