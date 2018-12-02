@@ -18,20 +18,20 @@ matrix:
     - python: 2.7
   include:
     - os: osx
-      osx_image: xcode6.4
       language: generic
       env:
         - MB_PYTHON_VERSION=2.7
+        - MACOSX_DEPLOYMENT_TARGET=10.6
     - os: osx
-      osx_image: xcode6.4
       language: generic
       env:
         - MB_PYTHON_VERSION=3.6
+        - MACOSX_DEPLOYMENT_TARGET=10.6
     - os: osx
-      osx_image: xcode6.4
       language: generic
       env:
         - MB_PYTHON_VERSION=3.7
+        - MACOSX_DEPLOYMENT_TARGET=10.6
 
 before_install:
     - brew cask uninstall --force oclint
