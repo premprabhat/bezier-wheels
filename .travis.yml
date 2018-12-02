@@ -35,6 +35,7 @@ matrix:
 
 before_install:
     - brew cask uninstall --force oclint
+    - brew update
     - brew install gcc
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
