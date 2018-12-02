@@ -49,7 +49,6 @@ script:
     - install_run ${PLAT}
 
 after_success:
-    - find ${TRAVIS_BUILD_DIR}/wheelhouse/
     - python -m pip install --upgrade pip virtualenv
     - virtualenv --python=python2.7 gsutil-env
     - gsutil-env/bin/pip install gsutil
