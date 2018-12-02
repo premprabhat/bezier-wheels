@@ -64,9 +64,9 @@ matrix:
         - MACOSX_DEPLOYMENT_TARGET=10.6
 
 before_install:
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; brew cask uninstall --force oclint; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; brew update                       ; fi
-    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; brew install gcc                  ; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then brew cask uninstall --force oclint; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then brew update                       ; fi
+    - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then brew install gcc                  ; fi
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
     - before_install
