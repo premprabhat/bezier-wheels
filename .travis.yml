@@ -21,48 +21,48 @@ matrix:
     - os: linux
       env:
         - MB_PYTHON_VERSION=2.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - UNICODE_WIDTH=16
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-        - UNICODE_WIDTH=16
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=i686
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - PLAT=i686
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=2.7
+    #     - UNICODE_WIDTH=16
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=2.7
+    #     - PLAT=i686
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=2.7
+    #     - PLAT=i686
+    #     - UNICODE_WIDTH=16
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    #     - PLAT=i686
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
+    # - os: linux
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
+    #     - PLAT=i686
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=2.7
         - MACOSX_DEPLOYMENT_TARGET=10.6
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - MACOSX_DEPLOYMENT_TARGET=10.6
-    - os: osx
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - MACOSX_DEPLOYMENT_TARGET=10.6
+    # - os: osx
+    #   language: generic
+    #   env:
+    #     - MB_PYTHON_VERSION=3.6
+    #     - MACOSX_DEPLOYMENT_TARGET=10.6
+    # - os: osx
+    #   language: generic
+    #   env:
+    #     - MB_PYTHON_VERSION=3.7
+    #     - MACOSX_DEPLOYMENT_TARGET=10.6
 
 before_install:
     - if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then brew cask uninstall --force oclint; fi
