@@ -7,5 +7,5 @@ function pre_build {
 
 function run_tests {
     python --version
-    pytest tests/
+    pytest ${TRAVIS_BUILD_DIR}/bezier/tests
 }
