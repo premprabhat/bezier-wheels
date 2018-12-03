@@ -6,7 +6,6 @@ env:
         - TEST_DEPENDS="--requirement bezier/scripts/osx/requirements.txt"
         - PLAT=x86_64
         - UNICODE_WIDTH=32
-        - BEZIER_WHEEL=True
 
 language: python
 python: 2.7

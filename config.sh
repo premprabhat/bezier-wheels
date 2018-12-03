@@ -8,4 +8,5 @@ function pre_build {
 function run_tests {
     python --version
     echo "pwd: $(pwd)"
+    echo "BEZIER_TESTS: ${BEZIER_TESTS}"
 }
