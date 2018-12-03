@@ -2,16 +2,22 @@
 # Test for OSX with [ -n "$IS_OSX" ]
 
 function pre_build {
-    python --version
+    :
+}
+
+function pip_opts {
+    # Extra options for pip
+    echo "-v"
 }
 
 function run_tests {
-    python --version
-    echo "BEZIER_WHEEL: ${BEZIER_WHEEL}"
+    echo "Executing run_tests ..."
+    echo "python --version: $(python --version)"
     if [[ -n "${IS_OSX}" ]]; then
-        echo "BEZIER_TESTS: ${TRAVIS_BUILD_DIR}/bezier/tests"
+        BEZIER_TESTS=${TRAVIS_BUILD_DIR}/bezier/tests
     else
         # I.e. running on a Docker container
-        echo "BEZIER_TESTS: /io/bezier/tests"
+        BEZIER_TESTS=/io/bezier/tests
     fi
+    pytest ${BEZIER_TESTS}
 }
