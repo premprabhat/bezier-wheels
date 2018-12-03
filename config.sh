@@ -2,7 +2,9 @@
 # Test for OSX with [ -n "$IS_OSX" ]
 
 function pre_build {
-    :
+    if [[ -n "${IS_OSX}" ]]; then
+        brew install gcc
+    fi
 }
 
 function pip_opts {
