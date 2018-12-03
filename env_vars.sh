@@ -10,10 +10,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export BEZIER_WHEEL=True
-if [[ -z "${IS_OSX}" ]]; then
-    # I.e. running on a Docker container
-    export BEZIER_TESTS=/io/bezier/tests
-else
-    export BEZIER_TESTS=${TRAVIS_BUILD_DIR}/bezier/tests
-fi
+BEZIER_WHEEL=True
