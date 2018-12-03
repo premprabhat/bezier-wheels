@@ -12,7 +12,8 @@ function pip_opts {
 
 function run_tests {
     echo "Executing run_tests ..."
-    echo "python --version: $(python --version)"
+    echo "python --version:"
+    python --version
     if [[ -n "${IS_OSX}" ]]; then
         BEZIER_TESTS=${TRAVIS_BUILD_DIR}/bezier/tests
     else
