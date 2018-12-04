@@ -88,6 +88,8 @@ test_script:
   # Assumes `cd %REPO_DIR%` was called previously.
   - python -m virtualenv test-venv
   - test-venv\Scripts\pip install --requirement scripts\requirements.txt
+  - test-venv\Scripts\pip install --requirement ..\requirements.txt
+  - dir /s /b dist
   - test-venv\Scripts\pip install bezier --no-index --find-links dist
   - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
   - test-venv\Scripts\py.test tests\unit
