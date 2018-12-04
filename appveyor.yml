@@ -13,7 +13,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 56a275aac704f4b48166c390fbd044f5a98e3960
+    BUILD_COMMIT: 1ae147f81e7a01ba672806a8fd56de25ba2bdcdb
     BUILD_DEPENDS: "numpy"
     TEST_DEPENDS: "--requirement scripts\\requirements.txt"
     BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
@@ -77,12 +77,6 @@ build_script:
 
   - ..\build_wheel.cmd
 
-  - ps: |
-      # Upload artifact to Appveyor immediately after build
-      ls dist -r | Foreach-Object {
-          appveyor PushArtifact $_.FullName
-      }
-
 test_script:
   # Assumes `cd %REPO_DIR%` was called previously.
   - python -m virtualenv test-venv
@@ -102,7 +96,8 @@ test_script:
 
 artifacts:
   - path: "bezier\\journal.txt"
+  - path: "wheelhouse\\bezier*win*.whl"
 
-on_failure:
-  # Assumes `cd %REPO_DIR%` was called previously.
-  - appveyor PushArtifact "journal.txt"
+cache:
+  # Use the appveyor cache to avoid re-downloading large archives.
+  - '%APPDATA%\pip\Cache'
