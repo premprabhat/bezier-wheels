@@ -11,7 +11,7 @@ environment:
 
   global:
     REPO_DIR: bezier
-    BUILD_COMMIT: 16ecc2deae3be1e5b11b75b01abb2b06e67bc359
+    BUILD_COMMIT: 56a275aac704f4b48166c390fbd044f5a98e3960
     BUILD_DEPENDS: "numpy"
     BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
     BEZIER_WHEEL: "True"
@@ -77,7 +77,7 @@ build_script:
   - cd %REPO_DIR%
   - git checkout %BUILD_COMMIT%
 
-  - |-
+  - |
     IF "%NEEDS_CMD_IN_ENV%" == "True" (
       "%CMD_IN_ENV% python setup.py bdist_wheel"
     ) ELSE (
@@ -93,7 +93,7 @@ build_script:
 test_script:
   # Assumes `cd %REPO_DIR%` was called previously.
   - python -m virtualenv test-venv
-  - test-venv\Scripts\pip install --requirement ..\requirements.txt
+  - test-venv\Scripts\pip install --requirement scripts\requirements.txt
   - test-venv\Scripts\pip install bezier --no-index --find-links dist
   - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
   - test-venv\Scripts\py.test tests\unit

@@ -1,9 +1,9 @@
 env:
     global:
         - REPO_DIR=bezier
-        - BUILD_COMMIT=16ecc2deae3be1e5b11b75b01abb2b06e67bc359
+        - BUILD_COMMIT=56a275aac704f4b48166c390fbd044f5a98e3960
         - BUILD_DEPENDS="numpy"
-        - TEST_DEPENDS="--requirement bezier/scripts/osx/requirements.txt"
+        - TEST_DEPENDS="--requirement bezier/scripts/requirements.txt"
         - PLAT=x86_64
         - UNICODE_WIDTH=32
 
