@@ -1,7 +1,16 @@
+version: 1.0.{build}.{branch}
+
+matrix:
+  fast_finish: true
+
+# We always use a 64-bit machine.
+platform:
+  - x64
+
 environment:
+
   global:
     REPO_DIR: bezier
-    PACKAGE_NAME: bezier
     BUILD_COMMIT: 16ecc2deae3be1e5b11b75b01abb2b06e67bc359
     BUILD_DEPENDS: "numpy"
     BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
@@ -12,6 +21,9 @@ environment:
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   matrix:
+
+    # See: https://www.appveyor.com/docs/installed-software/#python
+
     - PYTHON: "C:\\Python27"
     - PYTHON: "C:\\Python27-x64"
       NEEDS_CMD_IN_ENV: "True"
@@ -20,85 +32,76 @@ environment:
     - PYTHON: "C:\\Python37"
     - PYTHON: "C:\\Python37-x64"
 
-# We always use a 64-bit machine, but can build x86 distributions
-# with the TARGET_ARCH variable.
-platform:
-    - x64
-
-matrix:
-    fast_finish: true
-
 install:
-    # Fetch submodules
-    - git submodule update --init --recursive
+  # Fetch submodules
+  - git submodule update --init --recursive
 
-    - cmd: echo "Filesystem root:"
-    - dir C:\
+  - cmd: echo "Filesystem root:"
+  - dir C:\
 
-    - echo "Installed SDKs:"
-    - dir "C:/Program Files/Microsoft SDKs/Windows"
+  - echo "Installed SDKs:"
+  - dir "C:/Program Files/Microsoft SDKs/Windows"
 
-    # Prepend "current" Python to the PATH of this build.
-    - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
+  # Prepend "current" Python to the PATH of this build.
+  - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
 
-    # Append MinGW to the PATH of this build so ``gfortran`` is visible
-    # to ``numpy.distutils``.
-    - ps: |
-        $PYTHON = $env:PYTHON
-        If ($PYTHON.EndsWith("-x64")) {
-            $MINGW = $env:MINGW_64
-        } Else {
-            $MINGW = $env:MINGW_32
-        }
-        $env:Path += ";$MINGW"
+  # Append MinGW to the PATH of this build so ``gfortran`` is visible
+  # to ``numpy.distutils``.
+  - ps: |
+      $PYTHON = $env:PYTHON
+      If ($PYTHON.EndsWith("-x64")) {
+          $MINGW = $env:MINGW_64
+      } Else {
+          $MINGW = $env:MINGW_32
+      }
+      $env:Path += ";$MINGW"
 
-    # Check that we have the expected version and architecture for Python
-    - python --version
-    - python -c "import struct; print(struct.calcsize('P') * 8)"
-    - python -c "import os; print(os.name)"
-    - python -c "import sys; print(sys.platform); print(sys.version)"
+  # Check that we have the expected version and architecture for Python
+  - python --version
+  - python -c "import struct; print(struct.calcsize('P') * 8)"
+  - python -c "import os; print(os.name)"
+  - python -c "import sys; print(sys.platform); print(sys.version)"
 
-    # Packaging requirements
-    # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
-    # For context: https://github.com/pypa/wheel/issues/161 and
-    #              https://github.com/pypa/wheel/issues/171
-    - python -m pip install --upgrade pip setuptools virtualenv
-    - python -m pip install "wheel==0.26.0"
+  # Packaging requirements
+  # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
+  # For context: https://github.com/pypa/wheel/issues/161 and
+  #              https://github.com/pypa/wheel/issues/171
+  - python -m pip install --upgrade pip setuptools virtualenv
+  - python -m pip install "wheel==0.26.0"
 
-    # Install the build dependencies of the project.
+  # Install the build dependencies of the project.
+  - python -m pip install --upgrade %BUILD_DEPENDS%
 
 build_script:
-    # Install build requirements
-    - python -m pip install --upgrade %BUILD_DEPENDS%
+  # build wheel:
+  - cd %REPO_DIR%
+  - git checkout %BUILD_COMMIT%
 
-    # build wheel:
-    - cd %REPO_DIR%
-    - git checkout %BUILD_COMMIT%
+  - |-
+    IF "%NEEDS_CMD_IN_ENV%" == "True" (
+      "%CMD_IN_ENV% python setup.py bdist_wheel"
+    ) ELSE (
+      python setup.py bdist_wheel"
+    )
 
-    - IF "%NEEDS_CMD_IN_ENV%" == "True" (
-        "%CMD_IN_ENV% python setup.py bdist_wheel"
-      ) ELSE (
-        python setup.py bdist_wheel"
-      )
-
-    - ps: |
-        # Upload artifact to Appveyor immediately after build
-        ls dist -r | Foreach-Object {
-            appveyor PushArtifact $_.FullName
-        }
+  - ps: |
+      # Upload artifact to Appveyor immediately after build
+      ls dist -r | Foreach-Object {
+          appveyor PushArtifact $_.FullName
+      }
 
 test_script:
-    # Assumes `cd %REPO_DIR%` was called previously.
-    - python -m virtualenv test-venv
-    - test-venv\Scripts\pip install --requirement ..\requirements.txt
-    - test-venv\Scripts\pip install bezier --no-index --find-links dist
-    - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
-    - test-venv\Scripts\py.test tests\unit
-    - test-venv\Scripts\python -c "from bezier import _speedup; print(_speedup)"
+  # Assumes `cd %REPO_DIR%` was called previously.
+  - python -m virtualenv test-venv
+  - test-venv\Scripts\pip install --requirement ..\requirements.txt
+  - test-venv\Scripts\pip install bezier --no-index --find-links dist
+  - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
+  - test-venv\Scripts\py.test tests\unit
+  - test-venv\Scripts\python -c "from bezier import _speedup; print(_speedup)"
 
 artifacts:
-    - path: "bezier\\journal.txt"
+  - path: "bezier\\journal.txt"
 
 on_failure:
-    # Assumes `cd %REPO_DIR%` was called previously.
-    - appveyor PushArtifact "journal.txt"
+  # Assumes `cd %REPO_DIR%` was called previously.
+  - appveyor PushArtifact "journal.txt"
