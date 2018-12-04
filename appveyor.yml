@@ -2,37 +2,23 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: f9b6c7a58ec353876f644c3cb5ec1fbcb9401399
-    BUILD_DEPENDS: "numpy>=1.9.0"
-    BEZIER_JOURNAL: "C:\\projects\\bezier-wheels\\bezier\\journal.txt"
+    BUILD_COMMIT: 16ecc2deae3be1e5b11b75b01abb2b06e67bc359
+    BUILD_DEPENDS: "numpy"
+    BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
     BEZIER_WHEEL: "True"
 
-    # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
-    # /E:ON and /V:ON options are not enabled in the batch script intepreter
-    # See: http://stackoverflow.com/a/13751649/163740
-    CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\multibuild\\ci\\appveyor\\windows_sdk.cmd"
+    CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\bezier\\appveyor\\windows_py27_64bit.cmd"
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   matrix:
     - PYTHON: "C:\\Python27"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "32"
     - PYTHON: "C:\\Python27-x64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "64"
+      NEEDS_CMD_IN_ENV: "True"
     - PYTHON: "C:\\Python36"
-      PYTHON_VERSION: "3.6"
-      PYTHON_ARCH: "32"
     - PYTHON: "C:\\Python36-x64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_ARCH: "64"
     - PYTHON: "C:\\Python37"
-      PYTHON_VERSION: "3.7"
-      PYTHON_ARCH: "32"
     - PYTHON: "C:\\Python37-x64"
-      PYTHON_VERSION: "3.7"
-      PYTHON_ARCH: "64"
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.
@@ -52,42 +38,48 @@ install:
     - echo "Installed SDKs:"
     - dir "C:/Program Files/Microsoft SDKs/Windows"
 
-    # Prepend "current" Python to the PATH of this build (this cannot be
-    # done from inside the powershell script as it would require to restart
-    # the parent CMD process).
+    # Prepend "current" Python to the PATH of this build.
     - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
 
     # Append MinGW to the PATH of this build so ``gfortran`` is visible
     # to ``numpy.distutils``.
     - ps: |
-        $PYTHON_ARCH = $env:PYTHON_ARCH
-        If ($PYTHON_ARCH -eq 32) {
-            $MINGW = $env:MINGW_32
-        } Else {
+        $PYTHON = $env:PYTHON
+        If ($PYTHON.EndsWith("-x64")) {
             $MINGW = $env:MINGW_64
+        } Else {
+            $MINGW = $env:MINGW_32
         }
         $env:Path += ";$MINGW"
 
     # Check that we have the expected version and architecture for Python
     - python --version
     - python -c "import struct; print(struct.calcsize('P') * 8)"
-    - python -c "import os, sys; print(os.name); print(sys.platform); print(sys.version)"
+    - python -c "import os; print(os.name)"
+    - python -c "import sys; print(sys.platform); print(sys.version)"
 
-    # Install requirements
-    - python -m pip install --upgrade pip
-    # Pin wheel to 0.26 to avoid Windows ABI tag for built wheel
-    - pip install "wheel==0.26.0"
+    # Packaging requirements
+    # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
+    # For context: https://github.com/pypa/wheel/issues/161 and
+    #              https://github.com/pypa/wheel/issues/171
+    - python -m pip install --upgrade pip setuptools virtualenv
+    - python -m pip install "wheel==0.26.0"
+
+    # Install the build dependencies of the project.
 
 build_script:
     # Install build requirements
-    - pip install --upgrade %BUILD_DEPENDS%
-    - pip install --upgrade virtualenv
+    - python -m pip install --upgrade %BUILD_DEPENDS%
 
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
 
-    - "%CMD_IN_ENV% python setup.py bdist_wheel"
+    - IF "%NEEDS_CMD_IN_ENV%" == "True" (
+        "%CMD_IN_ENV% python setup.py bdist_wheel"
+      ) ELSE (
+        python setup.py bdist_wheel"
+      )
 
     - ps: |
         # Upload artifact to Appveyor immediately after build
@@ -98,8 +90,7 @@ build_script:
 test_script:
     # Assumes `cd %REPO_DIR%` was called previously.
     - python -m virtualenv test-venv
-    - test-venv\Scripts\pip install --upgrade --requirement ..\requirements.txt
-    - test-venv\Scripts\pip install --upgrade wheel
+    - test-venv\Scripts\pip install --requirement ..\requirements.txt
     - test-venv\Scripts\pip install bezier --no-index --find-links dist
     - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
     - test-venv\Scripts\py.test tests\unit
@@ -109,7 +100,5 @@ artifacts:
     - path: "bezier\\journal.txt"
 
 on_failure:
-    # Assumes `cd %REPO_DIR%` was called.
-    # e.g. https://ci.appveyor.com/api/buildjobs/3a1mtmvgt92vdy9v/artifacts/journal.txt
-    # from https://ci.appveyor.com/project/dhermes/bezier-wheels/build/1.0.21/job/3a1mtmvgt92vdy9v
+    # Assumes `cd %REPO_DIR%` was called previously.
     - appveyor PushArtifact "journal.txt"
