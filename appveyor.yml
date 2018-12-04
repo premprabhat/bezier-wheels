@@ -1,3 +1,4 @@
+---
 version: 1.0.{build}.{branch}
 
 matrix:
@@ -16,7 +17,6 @@ environment:
     BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
     BEZIER_WHEEL: "True"
 
-    CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\bezier\\appveyor\\windows_py27_64bit.cmd"
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
@@ -26,7 +26,6 @@ environment:
 
     - PYTHON: "C:\\Python27"
     - PYTHON: "C:\\Python27-x64"
-      NEEDS_CMD_IN_ENV: "True"
     - PYTHON: "C:\\Python36"
     - PYTHON: "C:\\Python36-x64"
     - PYTHON: "C:\\Python37"
@@ -77,12 +76,7 @@ build_script:
   - cd %REPO_DIR%
   - git checkout %BUILD_COMMIT%
 
-  - cmd: |
-      IF "%NEEDS_CMD_IN_ENV%" == "True" (
-        "%CMD_IN_ENV% python setup.py bdist_wheel"
-      ) ELSE (
-        python setup.py bdist_wheel"
-      )
+  - build_wheel.cmd
 
   - ps: |
       # Upload artifact to Appveyor immediately after build
