@@ -77,7 +77,7 @@ build_script:
   - cd %REPO_DIR%
   - git checkout %BUILD_COMMIT%
 
-  - |
+  - cmd: |
     IF "%NEEDS_CMD_IN_ENV%" == "True" (
       "%CMD_IN_ENV% python setup.py bdist_wheel"
     ) ELSE (
