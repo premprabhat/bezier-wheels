@@ -12,8 +12,10 @@ environment:
 
   global:
     REPO_DIR: bezier
+    PACKAGE_NAME: bezier
     BUILD_COMMIT: 56a275aac704f4b48166c390fbd044f5a98e3960
     BUILD_DEPENDS: "numpy"
+    TEST_DEPENDS: "--requirement scripts\\requirements.txt"
     BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
     BEZIER_WHEEL: "True"
 
@@ -55,11 +57,8 @@ install:
       }
       $env:Path += ";$MINGW"
 
-  # Check that we have the expected version and architecture for Python
-  - python --version
-  - python -c "import struct; print(struct.calcsize('P') * 8)"
-  - python -c "import os; print(os.name)"
-  - python -c "import sys; print(sys.platform); print(sys.version)"
+  # Check that we have the expected version and architecture for Python.
+  - python env_info.py
 
   # Packaging requirements
   # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
@@ -87,13 +86,19 @@ build_script:
 test_script:
   # Assumes `cd %REPO_DIR%` was called previously.
   - python -m virtualenv test-venv
-  - test-venv\Scripts\pip install --requirement scripts\requirements.txt
-  - test-venv\Scripts\pip install --requirement ..\requirements.txt
-  - dir /s /b dist
-  - test-venv\Scripts\pip install bezier --no-index --find-links dist
-  - test-venv\Scripts\python -c "import bezier; print(bezier._HAS_SPEEDUP)"
+
+  # Install test dependencies.
+  - test-venv\Scripts\pip install %TEST_DEPENDS%
+
+  # Install package from local built wheel.
+  - test-venv\Scripts\pip install --no-index --find-links "%APPVEYOR_BUILD_FOLDER%\\wheelhouse" %PACKAGE_NAME%
+
+  # Verify speedups are built.
+  - test-venv\Scripts\python ..\check_speedup.py
+
+  # Run unit and functional tests.
   - test-venv\Scripts\py.test tests\unit
-  - test-venv\Scripts\python -c "from bezier import _speedup; print(_speedup)"
+  - test-venv\Scripts\py.test tests\functional
 
 artifacts:
   - path: "bezier\\journal.txt"

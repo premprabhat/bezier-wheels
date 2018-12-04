@@ -17,7 +17,8 @@
 IF "%PYTHON%" == "C:\\Python27-x64" (
   cmd /E:ON /V:ON /C ^
     "%APPVEYOR_BUILD_FOLDER%\\bezier\\appveyor\\windows_py27_64bit.cmd" ^
-    python setup.py bdist_wheel
+    python -m pip wheel -v --wheel-dir="%APPVEYOR_BUILD_FOLDER%\\wheelhouse" .
 ) ELSE (
-  python setup.py bdist_wheel
+  python -m pip wheel -v --wheel-dir="%APPVEYOR_BUILD_FOLDER%\\wheelhouse" .
 )
+dir /s /b "%APPVEYOR_BUILD_FOLDER%\\wheelhouse"
