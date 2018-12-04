@@ -76,7 +76,7 @@ build_script:
   - cd %REPO_DIR%
   - git checkout %BUILD_COMMIT%
 
-  - build_wheel.cmd
+  - ..\build_wheel.cmd
 
   - ps: |
       # Upload artifact to Appveyor immediately after build
