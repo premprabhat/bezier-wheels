@@ -15,15 +15,17 @@ environment:
     PACKAGE_NAME: bezier
     BUILD_COMMIT: 1ae147f81e7a01ba672806a8fd56de25ba2bdcdb
     BUILD_DEPENDS: "numpy"
-    TEST_DEPENDS: "--requirement %APPVEYOR_BUILD_FOLDER%\\bezier\\scripts\\requirements.txt"
-    BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
+    TEST_DEPENDS:
+      '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
+    BEZIER_JOURNAL: '%APPVEYOR_BUILD_FOLDER%\bezier\journal.txt'
     BEZIER_WHEEL: "True"
 
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
     DECRYPT_KEY_JSON:
-      secure: vfomU73c6HFaEH+xcMV//mzfo08Hbai/hC0lr9dkTZpGpex8eb+ih/HBiQo++HNZE8q3Je7WQr52J8VkcpWJF/04Sf90rs9xkHURU4QopkQ=
+      secure: vfomU73c6HFaEH+xcMV//mzfo08Hbai/hC0lr9dkTZpGpex8eb+ih/HBiQo++HNZ
+              E8q3Je7WQr52J8VkcpWJF/04Sf90rs9xkHURU4QopkQ=
     GOOGLE_CLOUD_PROJECT:
       secure: xU2pL9SsQbToiL2jefnnSQ==
     GCS_BUCKET:
@@ -33,12 +35,12 @@ environment:
 
     # See: https://www.appveyor.com/docs/installed-software/#python
 
-    - PYTHON: "C:\\Python27"
-    - PYTHON: "C:\\Python27-x64"
-    - PYTHON: "C:\\Python36"
-    - PYTHON: "C:\\Python36-x64"
-    - PYTHON: "C:\\Python37"
-    - PYTHON: "C:\\Python37-x64"
+    - PYTHON: 'C:\Python27'
+    - PYTHON: 'C:\Python27-x64'
+    - PYTHON: 'C:\Python36'
+    - PYTHON: 'C:\Python36-x64'
+    - PYTHON: 'C:\Python37'
+    - PYTHON: 'C:\Python37-x64'
 
 install:
   # Fetch submodules
@@ -87,7 +89,11 @@ test_script:
   - test-venv\Scripts\pip install %TEST_DEPENDS%
 
   # Install package from local built wheel.
-  - test-venv\Scripts\pip install --no-index --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse %PACKAGE_NAME%
+  - |
+    test-venv\Scripts\pip install ^
+      --no-index ^
+      --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse ^
+      %PACKAGE_NAME%
 
   # Verify speedups are built.
   - test-venv\Scripts\python %APPVEYOR_BUILD_FOLDER%\appveyor\check_speedup.py
@@ -111,11 +117,18 @@ on_success:
   - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
 
   # Decrypt `key.json` for use to upload to GCS.
-  - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
-  - cmd: appveyor-tools\secure-file -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc -secret %DECRYPT_KEY_JSON% -out %APPVEYOR_BUILD_FOLDER%\key.json
+  - ps: '%APPVEYOR_BUILD_FOLDER%\appveyor\install-secure-file.ps1'
+  - cmd: |
+      appveyor-tools\secure-file ^
+        -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc ^
+        -secret %DECRYPT_KEY_JSON% ^
+        -out %APPVEYOR_BUILD_FOLDER%\key.json
 
   # Upload the wheel to GCS.
-  - gsutil-env\Scripts\gsutil cp %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl gs://%GCS_BUCKET%
+  - |
+    gsutil-env\Scripts\gsutil cp ^
+      %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl ^
+      gs://%GCS_BUCKET%
 
 cache:
   # Use the appveyor cache to avoid re-downloading large archives.
