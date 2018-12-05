@@ -31,15 +31,20 @@ default_project_id = {google_cloud_project}
 
 
 def main():
-    travis_build_dir = os.environ["TRAVIS_BUILD_DIR"]
+    if os.environ.get("TRAVIS") == "true":
+        build_dir_env_name = "TRAVIS_BUILD_DIR"
+    else:
+        build_dir_env_name = "APPVEYOR_BUILD_FOLDER"
+
+    build_dir = os.environ[build_dir_env_name]
     google_cloud_project = os.environ["GOOGLE_CLOUD_PROJECT"]
-    gcs_service_account_path = os.path.join(travis_build_dir, "key.json")
+    gcs_service_account_path = os.path.join(build_dir, "key.json")
     boto_contents = BOTO_TEMPLATE.format(
         gcs_service_account_path=gcs_service_account_path,
         google_cloud_project=google_cloud_project,
     )
 
-    boto_filename = os.path.join(travis_build_dir, ".boto")
+    boto_filename = os.path.join(build_dir, ".boto")
     with open(boto_filename, "w") as file_obj:
         file_obj.write(boto_contents)
 

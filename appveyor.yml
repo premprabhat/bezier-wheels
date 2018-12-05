@@ -24,6 +24,10 @@ environment:
 
     DECRYPT_KEY_JSON:
       secure: vfomU73c6HFaEH+xcMV//mzfo08Hbai/hC0lr9dkTZpGpex8eb+ih/HBiQo++HNZE8q3Je7WQr52J8VkcpWJF/04Sf90rs9xkHURU4QopkQ=
+    GOOGLE_CLOUD_PROJECT:
+      secure: xU2pL9SsQbToiL2jefnnSQ==
+    GCS_BUCKET:
+      secure: y5DEJ/24uX4RcZ+oOT/LuNByYWYiqIn1g8zEoNFIltk=
 
   matrix:
 
@@ -73,10 +77,6 @@ install:
   # Install the build dependencies of the project.
   - python -m pip install --upgrade %BUILD_DEPENDS%
 
-  # Decrypt `key.json` for use to upload to GCS.
-  - iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
-  - cmd: appveyor-tools\secure-file -decrypt key.json.appveyor.enc -secret %DECRYPT_KEY_JSON%
-
 build_script:
   # build wheel:
   - cd %REPO_DIR%
@@ -103,7 +103,23 @@ test_script:
 
 artifacts:
   - path: "bezier\\journal.txt"
-  - path: "wheelhouse\\bezier*win*.whl"
+
+on_success:
+  # Make a Python 2.7 virtual environment for `gsutil`
+  - C:\Python27-x64\Python.exe -m pip install --upgrade pip virtualenv
+  - C:\Python27-x64\Python.exe -m virtualenv --python=python2.7 gsutil-env
+  - gsutil-env\Scripts\pip install gsutil
+
+  # Set up the `boto` configuration for `gsutil`.
+  - gsutil-env\Scripts\python populate_boto.py
+  - export BOTO_CONFIG=${TRAVIS_BUILD_DIR}/.boto
+
+  # Decrypt `key.json` for use to upload to GCS.
+  - iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
+  - cmd: appveyor-tools\secure-file -decrypt key.json.appveyor.enc -secret %DECRYPT_KEY_JSON%
+
+  # Upload the wheel to GCS.
+  - gsutil-env\Scripts\gsutil cp %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl gs://%GCS_BUCKET%
 
 cache:
   # Use the appveyor cache to avoid re-downloading large archives.
