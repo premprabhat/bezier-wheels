@@ -105,9 +105,10 @@ on_success:
   - C:\Python27-x64\Python.exe -m virtualenv gsutil-env
   - gsutil-env\Scripts\pip install gsutil
 
-  # Set up the `boto` configuration for `gsutil`.
-  - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\appveyor\populate_boto.py
+  # Set up the `boto` configuration for `gsutil`. BOTO_CONFIG must be set
+  # before calling `populate_boto.py`
   - SET BOTO_CONFIG=%APPVEYOR_BUILD_FOLDER%\.boto
+  - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
 
   # Decrypt `key.json` for use to upload to GCS.
   - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))

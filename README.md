@@ -51,10 +51,10 @@ into a Python 2.7 (virtual) environment.
 
 Since `gcloud` isn't available for authentication and since user interaction
 isn't possible on CI platforms, a `.boto` configuration file is used and
-a custom `BOTO_PATH` points to `{BEZIER_WHEELS_DIR}/.boto`. The scripts
-`travis/populate_boto.py` and `appveyor/populate_boto.py` create this `.boto`
-file and populate it with the path to the decrypted service account
-credentials (`key.json`) as well as the default Google Cloud project ID.
+a custom `BOTO_PATH` points to `{BEZIER_WHEELS_DIR}/.boto`. The script
+`populate_boto.py` creates this `.boto` file and populates it with the path to
+the decrypted service account credentials (`key.json`) as well as the default
+Google Cloud project ID.
 
 [1]: https://github.com/dhermes/bezier
 [2]: https://github.com/matthew-brett/multibuild

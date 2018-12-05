@@ -78,10 +78,18 @@ script:
     - install_run ${PLAT}
 
 after_success:
+    # Make a Python 2.7 virtual environment for `gsutil`
     - python -m pip install --upgrade pip virtualenv
     - virtualenv --python=python2.7 gsutil-env
     - gsutil-env/bin/pip install gsutil
-    - gsutil-env/bin/python ${TRAVIS_BUILD_DIR}/travis/populate_boto.py
+
+    # Set up the `boto` configuration for `gsutil`. BOTO_CONFIG must be set
+    # before calling `populate_boto.py`
     - export BOTO_CONFIG=${TRAVIS_BUILD_DIR}/.boto
+    - gsutil-env/bin/python ${TRAVIS_BUILD_DIR}/populate_boto.py
+
+    # Decrypt `key.json` for use to upload to GCS.
     - openssl aes-256-cbc -K ${encrypted_02a99c88fc32_key} -iv ${encrypted_02a99c88fc32_iv} -in travis/key.json.enc -out key.json -d
+
+    # Upload the wheel to GCS.
     - gsutil-env/bin/gsutil cp ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl gs://${GCS_BUCKET}
