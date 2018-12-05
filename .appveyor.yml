@@ -90,10 +90,10 @@ test_script:
 
   # Install package from local built wheel.
   - cmd: |
-    test-venv\Scripts\pip install ^
-      --no-index ^
-      --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse ^
-      %PACKAGE_NAME%
+      test-venv\Scripts\pip install ^
+        --no-index ^
+        --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse ^
+        %PACKAGE_NAME%
 
   # Verify speedups are built.
   - test-venv\Scripts\python %APPVEYOR_BUILD_FOLDER%\appveyor\check_speedup.py
@@ -126,9 +126,9 @@ on_success:
 
   # Upload the wheel to GCS.
   - cmd: |
-    gsutil-env\Scripts\gsutil cp ^
-      %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl ^
-      gs://%GCS_BUCKET%
+      gsutil-env\Scripts\gsutil cp ^
+        %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl ^
+        gs://%GCS_BUCKET%
 
 cache:
   # Use the appveyor cache to avoid re-downloading large archives.
