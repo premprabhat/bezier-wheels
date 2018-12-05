@@ -1,7 +1,7 @@
 # `bezier-wheels`
 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/dhermes/bezier-wheels?svg=true)](https://ci.appveyor.com/project/dhermes/bezier-wheels)
-[![Travis CI Build Status](https://travis-ci.org/dhermes/bezier-wheels.svg)](https://travis-ci.org/dhermes/bezier-wheels)
+[![AppVeyor Build Status](https://img.shields.io/appveyor/ci/dhermes/bezier-wheels/master.svg?maxAge=3600&logo=appveyor&label=AppVeyor)](https://ci.appveyor.com/project/dhermes/bezier-wheels)
+[![Travis CI Build Status](https://img.shields.io/travis/dhermes/bezier-wheels/master.svg?maxAge=3600&logo=travis&label=Travis%20CI)](https://travis-ci.org/dhermes/bezier-wheels)
 
 Wheel Builder for [`bezier`][1]. This uses [`multibuild`][2] to
 create wheels for
