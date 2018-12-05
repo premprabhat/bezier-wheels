@@ -89,11 +89,10 @@ test_script:
   - test-venv\Scripts\pip install %TEST_DEPENDS%
 
   # Install package from local built wheel.
-  - cmd: |
-      test-venv\Scripts\pip install ^
-        --no-index ^
-        --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse ^
-        %PACKAGE_NAME%
+  - test-venv\Scripts\pip install
+      --no-index
+      --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse
+      %PACKAGE_NAME%
 
   # Verify speedups are built.
   - test-venv\Scripts\python %APPVEYOR_BUILD_FOLDER%\appveyor\check_speedup.py
@@ -118,17 +117,15 @@ on_success:
 
   # Decrypt `key.json` for use to upload to GCS.
   - ps: '%APPVEYOR_BUILD_FOLDER%\appveyor\install-secure-file.ps1'
-  - cmd: |
-      appveyor-tools\secure-file ^
-        -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc ^
-        -secret %DECRYPT_KEY_JSON% ^
-        -out %APPVEYOR_BUILD_FOLDER%\key.json
+  - appveyor-tools\secure-file
+      -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc
+      -secret %DECRYPT_KEY_JSON%
+      -out %APPVEYOR_BUILD_FOLDER%\key.json
 
   # Upload the wheel to GCS.
-  - cmd: |
-      gsutil-env\Scripts\gsutil cp ^
-        %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl ^
-        gs://%GCS_BUCKET%
+  - gsutil-env\Scripts\gsutil cp
+      %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl
+      gs://%GCS_BUCKET%
 
 cache:
   # Use the appveyor cache to avoid re-downloading large archives.
