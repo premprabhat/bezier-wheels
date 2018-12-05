@@ -107,7 +107,7 @@ artifacts:
 on_success:
   # Make a Python 2.7 virtual environment for `gsutil`
   - C:\Python27-x64\Python.exe -m pip install --upgrade pip virtualenv
-  - C:\Python27-x64\Python.exe -m virtualenv --python=python2.7 gsutil-env
+  - C:\Python27-x64\Python.exe -m virtualenv gsutil-env
   - gsutil-env\Scripts\pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`.
