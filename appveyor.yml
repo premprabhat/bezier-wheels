@@ -116,7 +116,7 @@ on_success:
 
   # Decrypt `key.json` for use to upload to GCS.
   - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
-  - cmd: appveyor-tools\secure-file -decrypt key.json.appveyor.enc -secret %DECRYPT_KEY_JSON%
+  - cmd: appveyor-tools\secure-file -decrypt %APPVEYOR_BUILD_FOLDER%\key.json.appveyor.enc -secret %DECRYPT_KEY_JSON%
 
   # Upload the wheel to GCS.
   - gsutil-env\Scripts\gsutil cp %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl gs://%GCS_BUCKET%
