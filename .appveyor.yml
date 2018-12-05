@@ -59,7 +59,7 @@ install:
       $env:Path += ";$MINGW"
 
   # Check that we have the expected version and architecture for Python.
-  - python %APPVEYOR_BUILD_FOLDER%\env_info.py
+  - python %APPVEYOR_BUILD_FOLDER%\appveyor\env_info.py
 
   # Packaging requirements
   # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
@@ -78,7 +78,7 @@ build_script:
   - cd %APPVEYOR_BUILD_FOLDER%
 
   # Build wheel:
-  - '%APPVEYOR_BUILD_FOLDER%\build_wheel.cmd'
+  - '%APPVEYOR_BUILD_FOLDER%\appveyor\build_wheel.cmd'
 
 test_script:
   - python -m virtualenv test-venv
@@ -90,11 +90,11 @@ test_script:
   - test-venv\Scripts\pip install --no-index --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse %PACKAGE_NAME%
 
   # Verify speedups are built.
-  - test-venv\Scripts\python %APPVEYOR_BUILD_FOLDER%\check_speedup.py
+  - test-venv\Scripts\python %APPVEYOR_BUILD_FOLDER%\appveyor\check_speedup.py
 
   # Run unit and functional tests.
-  - test-venv\Scripts\py.test tests\unit
-  - test-venv\Scripts\py.test tests\functional
+  - test-venv\Scripts\py.test %APPVEYOR_BUILD_FOLDER%\bezier\tests\unit
+  - test-venv\Scripts\py.test %APPVEYOR_BUILD_FOLDER%\bezier\tests\functional
 
 artifacts:
   - path: 'bezier\journal.txt'
@@ -111,7 +111,7 @@ on_success:
 
   # Decrypt `key.json` for use to upload to GCS.
   - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
-  - cmd: appveyor-tools\secure-file -decrypt %APPVEYOR_BUILD_FOLDER%\key.json.appveyor.enc -secret %DECRYPT_KEY_JSON% -out %APPVEYOR_BUILD_FOLDER%\key.json
+  - cmd: appveyor-tools\secure-file -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc -secret %DECRYPT_KEY_JSON% -out %APPVEYOR_BUILD_FOLDER%\key.json
 
   # Upload the wheel to GCS.
   - gsutil-env\Scripts\gsutil cp %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl gs://%GCS_BUCKET%

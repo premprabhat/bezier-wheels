@@ -31,11 +31,7 @@ default_project_id = {google_cloud_project}
 
 
 def main():
-    if os.environ.get("TRAVIS") == "true":
-        build_dir_env_name = "TRAVIS_BUILD_DIR"
-    else:
-        build_dir_env_name = "APPVEYOR_BUILD_FOLDER"
-
+    build_dir_env_name = "TRAVIS_BUILD_DIR"
     build_dir = os.environ[build_dir_env_name]
     google_cloud_project = os.environ["GOOGLE_CLOUD_PROJECT"]
     gcs_service_account_path = os.path.join(build_dir, "key.json")
