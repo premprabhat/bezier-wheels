@@ -24,8 +24,8 @@ environment:
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
     DECRYPT_KEY_JSON:
-      secure: vfomU73c6HFaEH+xcMV//mzfo08Hbai/hC0lr9dkTZpGpex8eb+ih/HBiQo++HNZ
-              E8q3Je7WQr52J8VkcpWJF/04Sf90rs9xkHURU4QopkQ=
+      secure: "vfomU73c6HFaEH+xcMV//mzfo08Hbai/hC0lr9dkTZpGpex8eb+ih/HBiQo\
+              ++HNZE8q3Je7WQr52J8VkcpWJF/04Sf90rs9xkHURU4QopkQ="
     GOOGLE_CLOUD_PROJECT:
       secure: xU2pL9SsQbToiL2jefnnSQ==
     GCS_BUCKET:
@@ -116,7 +116,9 @@ on_success:
   - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
 
   # Decrypt `key.json` for use to upload to GCS.
-  - ps: '%APPVEYOR_BUILD_FOLDER%\appveyor\install-secure-file.ps1'
+  - ps: "iex ((New-Object Net.WebClient).DownloadString(\
+      'https://raw.githubusercontent.com/appveyor/\
+      secure-file/master/install.ps1'))"
   - appveyor-tools\secure-file
       -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc
       -secret %DECRYPT_KEY_JSON%
