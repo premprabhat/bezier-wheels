@@ -111,8 +111,8 @@ on_success:
   - gsutil-env\Scripts\pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`.
-  - gsutil-env\Scripts\python populate_boto.py
-  - export BOTO_CONFIG=${TRAVIS_BUILD_DIR}/.boto
+  - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
+  - set BOTO_CONFIG=%APPVEYOR_BUILD_FOLDER%\.boto
 
   # Decrypt `key.json` for use to upload to GCS.
   - iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
