@@ -15,7 +15,7 @@ environment:
     PACKAGE_NAME: bezier
     BUILD_COMMIT: 1ae147f81e7a01ba672806a8fd56de25ba2bdcdb
     BUILD_DEPENDS: "numpy"
-    TEST_DEPENDS: "--requirement scripts\\requirements.txt"
+    TEST_DEPENDS: "--requirement %APPVEYOR_BUILD_FOLDER%\\bezier\\scripts\\requirements.txt"
     BEZIER_JOURNAL: "%APPVEYOR_BUILD_FOLDER%\\bezier\\journal.txt"
     BEZIER_WHEEL: "True"
 
@@ -44,12 +44,6 @@ install:
   # Fetch submodules
   - git submodule update --init --recursive
 
-  - cmd: echo "Filesystem root:"
-  - dir C:\
-
-  - echo "Installed SDKs:"
-  - dir "C:/Program Files/Microsoft SDKs/Windows"
-
   # Prepend "current" Python to the PATH of this build.
   - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
 
@@ -65,7 +59,7 @@ install:
       $env:Path += ";$MINGW"
 
   # Check that we have the expected version and architecture for Python.
-  - python env_info.py
+  - python %APPVEYOR_BUILD_FOLDER%\env_info.py
 
   # Packaging requirements
   # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
@@ -78,31 +72,32 @@ install:
   - python -m pip install --upgrade %BUILD_DEPENDS%
 
 build_script:
-  # build wheel:
+  # Make sure the project is checked out at the correct commit:
   - cd %REPO_DIR%
   - git checkout %BUILD_COMMIT%
+  - cd %APPVEYOR_BUILD_FOLDER%
 
-  - ..\build_wheel.cmd
+  # Build wheel:
+  - '%APPVEYOR_BUILD_FOLDER%\build_wheel.cmd'
 
 test_script:
-  # Assumes `cd %REPO_DIR%` was called previously.
   - python -m virtualenv test-venv
 
   # Install test dependencies.
   - test-venv\Scripts\pip install %TEST_DEPENDS%
 
   # Install package from local built wheel.
-  - test-venv\Scripts\pip install --no-index --find-links "%APPVEYOR_BUILD_FOLDER%\\wheelhouse" %PACKAGE_NAME%
+  - test-venv\Scripts\pip install --no-index --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse %PACKAGE_NAME%
 
   # Verify speedups are built.
-  - test-venv\Scripts\python ..\check_speedup.py
+  - test-venv\Scripts\python %APPVEYOR_BUILD_FOLDER%\check_speedup.py
 
   # Run unit and functional tests.
   - test-venv\Scripts\py.test tests\unit
   - test-venv\Scripts\py.test tests\functional
 
 artifacts:
-  - path: "bezier\\journal.txt"
+  - path: 'bezier\journal.txt'
 
 on_success:
   # Make a Python 2.7 virtual environment for `gsutil`
@@ -112,11 +107,11 @@ on_success:
 
   # Set up the `boto` configuration for `gsutil`.
   - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
-  - set BOTO_CONFIG=%APPVEYOR_BUILD_FOLDER%\.boto
+  - SET BOTO_CONFIG=%APPVEYOR_BUILD_FOLDER%\.boto
 
   # Decrypt `key.json` for use to upload to GCS.
   - ps: iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
-  - cmd: appveyor-tools\secure-file -decrypt %APPVEYOR_BUILD_FOLDER%\key.json.appveyor.enc -secret %DECRYPT_KEY_JSON%
+  - cmd: appveyor-tools\secure-file -decrypt %APPVEYOR_BUILD_FOLDER%\key.json.appveyor.enc -secret %DECRYPT_KEY_JSON% -out %APPVEYOR_BUILD_FOLDER%\key.json
 
   # Upload the wheel to GCS.
   - gsutil-env\Scripts\gsutil cp %APPVEYOR_BUILD_FOLDER%\wheelhouse\%PACKAGE_NAME%*.whl gs://%GCS_BUCKET%
