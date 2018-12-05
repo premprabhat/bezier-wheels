@@ -106,7 +106,7 @@ on_success:
   - gsutil-env\Scripts\pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`.
-  - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
+  - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\appveyor\populate_boto.py
   - SET BOTO_CONFIG=%APPVEYOR_BUILD_FOLDER%\.boto
 
   # Decrypt `key.json` for use to upload to GCS.
