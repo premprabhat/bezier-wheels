@@ -81,5 +81,5 @@ after_success:
     - gsutil-env/bin/pip install gsutil
     - gsutil-env/bin/python populate_boto.py
     - export BOTO_CONFIG=${TRAVIS_BUILD_DIR}/.boto
-    - openssl aes-256-cbc -K ${encrypted_02a99c88fc32_key} -iv ${encrypted_02a99c88fc32_iv} -in key.json.enc -out key.json -d
+    - openssl aes-256-cbc -K ${encrypted_02a99c88fc32_key} -iv ${encrypted_02a99c88fc32_iv} -in key.json.travis.enc -out key.json -d
     - gsutil-env/bin/gsutil cp ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl gs://${GCS_BUCKET}

@@ -22,16 +22,19 @@ environment:
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
 
+    DECRYPT_KEY_JSON:
+      secure: vfomU73c6HFaEH+xcMV//mzfo08Hbai/hC0lr9dkTZpGpex8eb+ih/HBiQo++HNZE8q3Je7WQr52J8VkcpWJF/04Sf90rs9xkHURU4QopkQ=
+
   matrix:
 
     # See: https://www.appveyor.com/docs/installed-software/#python
 
     - PYTHON: "C:\\Python27"
-    # - PYTHON: "C:\\Python27-x64"
-    # - PYTHON: "C:\\Python36"
-    # - PYTHON: "C:\\Python36-x64"
-    # - PYTHON: "C:\\Python37"
-    # - PYTHON: "C:\\Python37-x64"
+    - PYTHON: "C:\\Python27-x64"
+    - PYTHON: "C:\\Python36"
+    - PYTHON: "C:\\Python36-x64"
+    - PYTHON: "C:\\Python37"
+    - PYTHON: "C:\\Python37-x64"
 
 install:
   # Fetch submodules
@@ -69,6 +72,10 @@ install:
 
   # Install the build dependencies of the project.
   - python -m pip install --upgrade %BUILD_DEPENDS%
+
+  # Decrypt `key.json` for use to upload to GCS.
+  - iex ((New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/appveyor/secure-file/master/install.ps1'))
+  - cmd: appveyor-tools\secure-file -decrypt key.json.appveyor.enc -secret %DECRYPT_KEY_JSON%
 
 build_script:
   # build wheel:
