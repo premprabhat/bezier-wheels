@@ -90,7 +90,15 @@ after_success:
   - gsutil-env/bin/python ${TRAVIS_BUILD_DIR}/populate_boto.py
 
   # Decrypt `key.json` for use to upload to GCS.
-  - openssl aes-256-cbc -K ${encrypted_02a99c88fc32_key} -iv ${encrypted_02a99c88fc32_iv} -in travis/key.json.enc -out key.json -d
+  - |
+    openssl aes-256-cbc \
+      -K ${encrypted_02a99c88fc32_key} \
+      -iv ${encrypted_02a99c88fc32_iv} \
+      -in travis/key.json.enc \
+      -out key.json -d
 
   # Upload the wheel to GCS.
-  - gsutil-env/bin/gsutil cp ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl gs://${GCS_BUCKET}
+  - |
+    gsutil-env/bin/gsutil cp \
+      ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl \
+      gs://${GCS_BUCKET}
