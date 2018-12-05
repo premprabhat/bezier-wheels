@@ -14,11 +14,11 @@ environment:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
     BUILD_COMMIT: 1ae147f81e7a01ba672806a8fd56de25ba2bdcdb
-    BUILD_DEPENDS: "numpy"
+    BUILD_DEPENDS: numpy
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
     BEZIER_JOURNAL: '%APPVEYOR_BUILD_FOLDER%\bezier\journal.txt'
-    BEZIER_WHEEL: "True"
+    BEZIER_WHEEL: 'True'
 
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
@@ -35,43 +35,40 @@ environment:
 
     # See: https://www.appveyor.com/docs/installed-software/#python
 
-    - PYTHON: 'C:\Python27'
-    - PYTHON: 'C:\Python27-x64'
-    - PYTHON: 'C:\Python36'
-    - PYTHON: 'C:\Python36-x64'
-    - PYTHON: 'C:\Python37'
-    - PYTHON: 'C:\Python37-x64'
+    - PYTHON: '2.7-32'
+    - PYTHON: '2.7'
+    - PYTHON: '3.6-32'
+    - PYTHON: '3.6'
+    - PYTHON: '3.7-32'
+    - PYTHON: '3.7'
 
 install:
   # Fetch submodules
   - git submodule update --init --recursive
 
-  # Prepend "current" Python to the PATH of this build.
-  - SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
-
   # Append MinGW to the PATH of this build so ``gfortran`` is visible
   # to ``numpy.distutils``.
   - ps: |
       $PYTHON = $env:PYTHON
-      If ($PYTHON.EndsWith("-x64")) {
-          $MINGW = $env:MINGW_64
+      If ($PYTHON.EndsWith("-32")) {
+        $MINGW = $env:MINGW_32
       } Else {
-          $MINGW = $env:MINGW_32
+        $MINGW = $env:MINGW_64
       }
       $env:Path += ";$MINGW"
 
   # Check that we have the expected version and architecture for Python.
-  - python %APPVEYOR_BUILD_FOLDER%\appveyor\env_info.py
+  - py -%PYTHON% %APPVEYOR_BUILD_FOLDER%\appveyor\env_info.py
 
   # Packaging requirements
   # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
   # For context: https://github.com/pypa/wheel/issues/161 and
   #              https://github.com/pypa/wheel/issues/171
-  - python -m pip install --upgrade pip setuptools virtualenv
-  - python -m pip install "wheel==0.26.0"
+  - py -%PYTHON% -m pip install --upgrade pip setuptools virtualenv
+  - py -%PYTHON% -m pip install "wheel==0.26.0"
 
   # Install the build dependencies of the project.
-  - python -m pip install --upgrade %BUILD_DEPENDS%
+  - py -%PYTHON% -m pip install --upgrade %BUILD_DEPENDS%
 
 build_script:
   # Make sure the project is checked out at the correct commit:
@@ -83,13 +80,13 @@ build_script:
   - '%APPVEYOR_BUILD_FOLDER%\appveyor\build_wheel.cmd'
 
 test_script:
-  - python -m virtualenv test-venv
+  - py -%PYTHON% -m virtualenv test-venv
 
   # Install test dependencies.
-  - test-venv\Scripts\pip install %TEST_DEPENDS%
+  - test-venv\Scripts\python -m pip install %TEST_DEPENDS%
 
   # Install package from local built wheel.
-  - test-venv\Scripts\pip install
+  - test-venv\Scripts\python -m pip install
       --no-index
       --find-links %APPVEYOR_BUILD_FOLDER%\wheelhouse
       %PACKAGE_NAME%
@@ -106,9 +103,9 @@ artifacts:
 
 on_success:
   # Make a Python 2.7 virtual environment for `gsutil`
-  - C:\Python27-x64\Python.exe -m pip install --upgrade pip virtualenv
-  - C:\Python27-x64\Python.exe -m virtualenv gsutil-env
-  - gsutil-env\Scripts\pip install gsutil
+  - py -2.7 -m pip install --upgrade pip virtualenv
+  - py -2.7 -m virtualenv gsutil-env
+  - gsutil-env\Scripts\python -m pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`. BOTO_CONFIG must be set
   # before calling `populate_boto.py`
