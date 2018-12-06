@@ -51,20 +51,20 @@ matrix:
         - MB_PYTHON_VERSION=3.7
         - PLAT=i686
     - os: osx
+      osx_image: xcode8
       language: generic
       env:
         - MB_PYTHON_VERSION=2.7
-        - MACOSX_DEPLOYMENT_TARGET=10.6
     - os: osx
+      osx_image: xcode8
       language: generic
       env:
         - MB_PYTHON_VERSION=3.6
-        - MACOSX_DEPLOYMENT_TARGET=10.6
     - os: osx
+      osx_image: xcode8
       language: generic
       env:
         - MB_PYTHON_VERSION=3.7
-        - MACOSX_DEPLOYMENT_TARGET=10.6
 
 before_install:
   - source multibuild/common_utils.sh
