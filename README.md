@@ -7,7 +7,7 @@ Wheel Builder for [`bezier`][1]. This uses [`multibuild`][2] to
 create wheels for
 
 - `manylinux` (on Travis CI)
-- OS X (on Travis CI)
+- macOS (on Travis CI)
 - Windows (on AppVeyor)
 
 and uploads the built wheels to a Google Cloud Storage (GCS) bucket specified
