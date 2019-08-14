@@ -2,7 +2,7 @@
 env:
   global:
     - REPO_DIR=bezier
-    - BUILD_COMMIT=1ae147f81e7a01ba672806a8fd56de25ba2bdcdb
+    - BUILD_COMMIT=be1490d8cfbc6b2dfd9a722866973abf2738bc74
     - BUILD_DEPENDS="numpy"
     - TEST_DEPENDS="--requirement bezier/scripts/requirements.txt"
     - PLAT=x86_64
@@ -22,22 +22,6 @@ matrix:
   include:
     - os: linux
       env:
-        - MB_PYTHON_VERSION=2.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - UNICODE_WIDTH=16
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.7
-        - PLAT=i686
-        - UNICODE_WIDTH=16
-    - os: linux
-      env:
         - MB_PYTHON_VERSION=3.6
     - os: linux
       env:
@@ -50,11 +34,6 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.7
         - PLAT=i686
-    - os: osx
-      osx_image: xcode9.2
-      language: generic
-      env:
-        - MB_PYTHON_VERSION=2.7
     - os: osx
       osx_image: xcode9.2
       language: generic
@@ -81,7 +60,7 @@ script:
 after_success:
   # Make a Python 2.7 virtual environment for `gsutil`
   - python -m pip install --upgrade pip virtualenv
-  - virtualenv --python=python2.7 gsutil-env
+  - python -m virtualenv --python=python2.7 gsutil-env
   - gsutil-env/bin/pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`. BOTO_CONFIG must be set

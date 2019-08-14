@@ -14,15 +14,7 @@
 
 @ECHO OFF
 
-IF "%PYTHON%" == "2.7" (
-  cmd /E:ON /V:ON /C ^
-    %APPVEYOR_BUILD_FOLDER%\bezier\appveyor\windows_py27_64bit.cmd ^
-    py -%PYTHON% -m pip wheel -v ^
-    --wheel-dir=%APPVEYOR_BUILD_FOLDER%\wheelhouse ^
-    %APPVEYOR_BUILD_FOLDER%\bezier
-) ELSE (
-  py -%PYTHON% -m pip wheel -v ^
-    --wheel-dir=%APPVEYOR_BUILD_FOLDER%\wheelhouse ^
-    %APPVEYOR_BUILD_FOLDER%\bezier
-)
+py -%PYTHON% -m pip wheel -v ^
+  --wheel-dir=%APPVEYOR_BUILD_FOLDER%\wheelhouse ^
+  %APPVEYOR_BUILD_FOLDER%\bezier
 dir /s /b %APPVEYOR_BUILD_FOLDER%\wheelhouse

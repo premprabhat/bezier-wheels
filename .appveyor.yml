@@ -13,7 +13,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 1ae147f81e7a01ba672806a8fd56de25ba2bdcdb
+    BUILD_COMMIT: be1490d8cfbc6b2dfd9a722866973abf2738bc74
     BUILD_DEPENDS: numpy
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
@@ -35,8 +35,6 @@ environment:
 
     # See: https://www.appveyor.com/docs/installed-software/#python
 
-    - PYTHON: '2.7-32'
-    - PYTHON: '2.7'
     - PYTHON: '3.6-32'
     - PYTHON: '3.6'
     - PYTHON: '3.7-32'
