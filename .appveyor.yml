@@ -126,4 +126,4 @@ on_success:
 
 cache:
   # Use the appveyor cache to avoid re-downloading large archives.
-  - '%APPDATA%\pip\Cache'
+  - '%LOCALAPPDATA%\pip\Cache'
