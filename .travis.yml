@@ -2,7 +2,7 @@
 env:
   global:
     - REPO_DIR=bezier
-    - BUILD_COMMIT=be1490d8cfbc6b2dfd9a722866973abf2738bc74
+    - BUILD_COMMIT=9d2cc51a18bd2ec8e3a17d576e907e306310d0be
     - BUILD_DEPENDS="numpy"
     - TEST_DEPENDS="--requirement bezier/scripts/requirements.txt"
     - PLAT=x86_64
@@ -10,15 +10,18 @@ env:
     - ENV_VARS_PATH="travis/env_vars.sh"
     - CONFIG_PATH="travis/config.sh"
 
+addons:
+  homebrew:
+    packages:
+      - gcc # For `gfortran`
+
 language: python
-python: 2.7
+python: 3.7
 sudo: required
-dist: trusty
+dist: bionic
 services: docker
 
 matrix:
-  exclude:
-    - python: 2.7
   include:
     - os: linux
       env:
@@ -34,16 +37,28 @@ matrix:
       env:
         - MB_PYTHON_VERSION=3.7
         - PLAT=i686
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.8
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.8
+        - PLAT=i686
     - os: osx
-      osx_image: xcode9.2
+      osx_image: xcode11.2
       language: generic
       env:
         - MB_PYTHON_VERSION=3.6
     - os: osx
-      osx_image: xcode9.2
+      osx_image: xcode11.2
       language: generic
       env:
         - MB_PYTHON_VERSION=3.7
+    - os: osx
+      osx_image: xcode11.2
+      language: generic
+      env:
+        - MB_PYTHON_VERSION=3.8
 
 before_install:
   - source multibuild/common_utils.sh
@@ -58,9 +73,9 @@ script:
   - install_run ${PLAT}
 
 after_success:
-  # Make a Python 2.7 virtual environment for `gsutil`
+  # Make a virtual environment for `gsutil`
   - python -m pip install --upgrade pip virtualenv
-  - python -m virtualenv --python=python2.7 gsutil-env
+  - python -m virtualenv gsutil-env
   - gsutil-env/bin/pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`. BOTO_CONFIG must be set

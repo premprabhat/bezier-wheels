@@ -13,7 +13,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: be1490d8cfbc6b2dfd9a722866973abf2738bc74
+    BUILD_COMMIT: 9d2cc51a18bd2ec8e3a17d576e907e306310d0be
     BUILD_DEPENDS: numpy
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
@@ -39,6 +39,8 @@ environment:
     - PYTHON: '3.6'
     - PYTHON: '3.7-32'
     - PYTHON: '3.7'
+    - PYTHON: '3.8-32'
+    - PYTHON: '3.8'
 
 install:
   # Fetch submodules
@@ -59,11 +61,7 @@ install:
   - py -%PYTHON% %APPVEYOR_BUILD_FOLDER%\appveyor\env_info.py
 
   # Packaging requirements
-  # Pin wheel to 0.26.0 to avoid Windows ABI tag for built wheel
-  # For context: https://github.com/pypa/wheel/issues/161 and
-  #              https://github.com/pypa/wheel/issues/171
-  - py -%PYTHON% -m pip install --upgrade pip setuptools virtualenv
-  - py -%PYTHON% -m pip install "wheel==0.26.0"
+  - py -%PYTHON% -m pip install --upgrade pip setuptools virtualenv wheel
 
   # Install the build dependencies of the project.
   - py -%PYTHON% -m pip install --upgrade %BUILD_DEPENDS%
@@ -100,9 +98,9 @@ artifacts:
   - path: 'bezier\journal.txt'
 
 on_success:
-  # Make a Python 2.7 virtual environment for `gsutil`
-  - py -2.7 -m pip install --upgrade pip virtualenv
-  - py -2.7 -m virtualenv gsutil-env
+  # Make a virtual environment for `gsutil`
+  - py -m pip install --upgrade pip virtualenv
+  - py -m virtualenv gsutil-env
   - gsutil-env\Scripts\python -m pip install gsutil
 
   # Set up the `boto` configuration for `gsutil`. BOTO_CONFIG must be set
@@ -111,9 +109,7 @@ on_success:
   - gsutil-env\Scripts\python %APPVEYOR_BUILD_FOLDER%\populate_boto.py
 
   # Decrypt `key.json` for use to upload to GCS.
-  - ps: "iex ((New-Object Net.WebClient).DownloadString(\
-      'https://raw.githubusercontent.com/appveyor/\
-      secure-file/master/install.ps1'))"
+  - ps: appveyor\secure-file-install.ps1
   - appveyor-tools\secure-file
       -decrypt %APPVEYOR_BUILD_FOLDER%\appveyor\key.json.enc
       -secret %DECRYPT_KEY_JSON%
