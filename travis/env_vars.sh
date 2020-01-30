@@ -11,6 +11,10 @@
 # limitations under the License.
 
 export BEZIER_WHEEL=True
-export BEZIER_INSTALL_PREFIX="${TRAVIS_BUILD_DIR}/bezier/.nox/libbezier-release/usr"
+if [[ -n "${IS_OSX}" ]]; then
+    export BEZIER_INSTALL_PREFIX="${TRAVIS_BUILD_DIR}/bezier/.nox/libbezier-release/usr"
+else
+    export BEZIER_INSTALL_PREFIX="/io/bezier/.nox/libbezier-release/usr"
+fi
 export TARGET_NATIVE_ARCH=OFF
 export NOX_INSTALL_CMAKE=True
