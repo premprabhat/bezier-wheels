@@ -19,7 +19,11 @@ function pip_opts {
 }
 
 function pre_build {
-    cd "${TRAVIS_BUILD_DIR}/bezier"
+    if [[ -n "${IS_OSX}" ]]; then
+        cd "${TRAVIS_BUILD_DIR}/bezier"
+    else
+        cd /io/bezier
+    fi
     python -m nox --session libbezier-release --reuse-existing-virtualenvs
     cd -
 }
