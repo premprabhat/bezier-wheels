@@ -13,11 +13,14 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: 7b2fbc5692183a9e7cf998c25c4b48ba9d4fca77
+    BUILD_COMMIT: ce841389538013af16f86a03b494f88401468234
     BUILD_DEPENDS: 'numpy "machomachomangler == 0.0.1"'
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
     BEZIER_WHEEL: 'True'
+    BEZIER_INSTALL_PREFIX:
+      '%APPVEYOR_BUILD_FOLDER%\bezier\.nox\libbezier-release\usr'
+    TARGET_NATIVE_ARCH: 'OFF'
 
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\mingw64\bin
@@ -60,7 +63,7 @@ install:
   - py -%PYTHON% %APPVEYOR_BUILD_FOLDER%\appveyor\env_info.py
 
   # Packaging requirements
-  - py -%PYTHON% -m pip install --upgrade pip setuptools virtualenv wheel
+  - py -%PYTHON% -m pip install --upgrade nox pip setuptools virtualenv wheel
 
   # Install the build dependencies of the project.
   - py -%PYTHON% -m pip install --upgrade %BUILD_DEPENDS%
@@ -69,6 +72,11 @@ build_script:
   # Make sure the project is checked out at the correct commit:
   - cd %REPO_DIR%
   - git checkout %BUILD_COMMIT%
+  - cd %APPVEYOR_BUILD_FOLDER%
+
+  # Shared library at BEZIER_INSTALL_PREFIX
+  - cd %REPO_DIR%
+  - py -%PYTHON% -m nox --session libbezier-release --reuse-existing-virtualenvs
   - cd %APPVEYOR_BUILD_FOLDER%
 
   # Build wheel:
