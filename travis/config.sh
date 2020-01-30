@@ -18,6 +18,12 @@ function pip_opts {
     echo "-v"
 }
 
+function pre_build {
+    cd "${TRAVIS_BUILD_DIR}/bezier"
+    python -m nox --session libbezier-release --reuse-existing-virtualenvs
+    cd -
+}
+
 function run_tests {
     echo "Executing run_tests ..."
     echo "python --version:"
