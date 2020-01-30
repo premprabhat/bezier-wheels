@@ -13,11 +13,10 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: a20d1f65a20272ff8477c8c6177fa5faeb03922b
-    BUILD_DEPENDS: numpy
+    BUILD_COMMIT: 7b2fbc5692183a9e7cf998c25c4b48ba9d4fca77
+    BUILD_DEPENDS: 'numpy "machomachomangler == 0.0.1"'
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
-    BEZIER_JOURNAL: '%APPVEYOR_BUILD_FOLDER%\bezier\journal.txt'
     BEZIER_WHEEL: 'True'
 
     MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
@@ -93,9 +92,6 @@ test_script:
   # Run unit and functional tests.
   - test-venv\Scripts\py.test %APPVEYOR_BUILD_FOLDER%\bezier\tests\unit
   - test-venv\Scripts\py.test %APPVEYOR_BUILD_FOLDER%\bezier\tests\functional
-
-artifacts:
-  - path: 'bezier\journal.txt'
 
 on_success:
   # Make a virtual environment for `gsutil`
