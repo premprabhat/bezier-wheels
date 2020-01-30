@@ -19,6 +19,7 @@ function pip_opts {
 }
 
 function pre_build {
+    python -m pip install nox
     if [[ -n "${IS_OSX}" ]]; then
         cd "${TRAVIS_BUILD_DIR}/bezier"
     else
