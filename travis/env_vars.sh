@@ -17,4 +17,3 @@ else
     export BEZIER_INSTALL_PREFIX="/io/bezier/.nox/libbezier-release/usr"
 fi
 export TARGET_NATIVE_ARCH=OFF
-export NOX_INSTALL_CMAKE=True
