@@ -25,7 +25,7 @@ function pre_build {
     else
         # NOTE: `3.13.2` is the last version of `cmake` that supports 32-bit
         #       linux.
-        /opt/python/cp37-cp37m/bin/python -m pip install "cmake >= 3.13.2"
+        /opt/python/cp37-cp37m/bin/python -m pip install "cmake == 3.13.3"
         cp /opt/python/cp37-cp37m/bin/cmake /usr/bin/cmake
         cd /io/bezier
     fi
