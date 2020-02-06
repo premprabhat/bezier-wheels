@@ -20,6 +20,8 @@ def main():
     describe(r"C:\MinGW\bin")
     print("*" * 60)
     describe(r"C:\MinGW\mingw32")
+    print("*" * 60)
+    describe(r"C:\MinGW\mingw32\bin")
 
 
 if __name__ == "__main__":
