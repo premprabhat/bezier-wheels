@@ -21,6 +21,8 @@ def main():
     print("*" * 60)
     describe(r"C:\MinGW\bin")
     print("*" * 60)
+    describe(r"C:\MinGW\msys")
+    print("*" * 60)
     describe(r"C:\MinGW\mingw32")
     print("*" * 60)
     describe(r"C:\MinGW\mingw32\bin")
