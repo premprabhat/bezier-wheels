@@ -7,7 +7,7 @@ def describe(directory):
     print("-" * 60)
     for contained in as_path.glob("*"):
         if contained.is_dir():
-            print(repr(contained))
+            print(f"{contained!r} (directory)")
         else:
             print(repr(contained))
 
