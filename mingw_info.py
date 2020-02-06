@@ -13,6 +13,8 @@ def describe(directory):
 
 
 def main():
+    describe(r"C:\msys64")
+    print("*" * 60)
     describe(r"C:\mingw-w64")
     print("*" * 60)
     describe(r"C:\MinGW")
