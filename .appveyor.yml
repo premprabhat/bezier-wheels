@@ -15,4 +15,11 @@ environment:
     - PYTHON: '3.8'
 
 install:
+  - echo "Filesystem root:"
+  - dir C:\
+
+build_script:
+  - py -%PYTHON% %APPVEYOR_BUILD_FOLDER%\appveyor\env_info.py
+
+test_script:
   - py -%PYTHON% %APPVEYOR_BUILD_FOLDER%\mingw_info.py
