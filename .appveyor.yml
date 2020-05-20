@@ -13,7 +13,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: f3ea7b339d16cae3ba96b0845a450d1a97e170e2
+    BUILD_COMMIT: ff79e49390c698241664cfb3b25403416092200a
     BUILD_DEPENDS: 'numpy "machomachomangler == 0.0.1"'
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
