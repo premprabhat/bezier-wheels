@@ -9,6 +9,10 @@ else
   export TRAVIS_OS_NAME=linux
 fi
 
+# Install `virtualenv` globally (multibuild expects this to be available but
+# does not check or install)
+python -m pip install --upgrade virtualenv
+
 source multibuild/common_utils.sh
 source multibuild/travis_steps.sh
 before_install
