@@ -12,6 +12,11 @@ fi
 # Install `virtualenv` globally (multibuild expects this to be available but
 # does not check or install)
 python -m pip install --upgrade virtualenv
+if [[ "${GITHUB_ACTIONS_RUNS_ON}" == "macos-latest" ]]; then
+  export PATH="${PATH}:/Library/Frameworks/Python.framework/Versions/2.7/bin"
+else
+  export PATH="${PATH}:/home/runner/.local/bin"
+fi
 
 source multibuild/common_utils.sh
 source multibuild/travis_steps.sh
