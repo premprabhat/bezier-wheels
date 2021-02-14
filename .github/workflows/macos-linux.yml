@@ -18,6 +18,7 @@ jobs:
       MB_ML_VER: 2010
       ENV_VARS_PATH: "travis/env_vars.sh"
       CONFIG_PATH: "travis/config.sh"
+      GITHUB_ACTIONS_RUNS_ON: ${{ matrix.os }}
     strategy:
       matrix:
         os:
