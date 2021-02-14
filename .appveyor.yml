@@ -1,4 +1,5 @@
 ---
+image: Visual Studio 2019
 version: 1.0.{build}.{branch}
 
 matrix:
@@ -13,7 +14,7 @@ environment:
   global:
     REPO_DIR: bezier
     PACKAGE_NAME: bezier
-    BUILD_COMMIT: ff79e49390c698241664cfb3b25403416092200a
+    BUILD_COMMIT: 2d878a2256158648601dc7b45cee74d9aa5b9b7a
     BUILD_DEPENDS: 'numpy "machomachomangler == 0.0.1"'
     TEST_DEPENDS:
       '--requirement %APPVEYOR_BUILD_FOLDER%\bezier\scripts\requirements.txt'
@@ -22,7 +23,7 @@ environment:
       '%APPVEYOR_BUILD_FOLDER%\bezier\.nox\libbezier-release\usr'
     TARGET_NATIVE_ARCH: 'OFF'
 
-    MINGW_32: C:\mingw-w64\i686-6.3.0-posix-dwarf-rt_v5-rev1\mingw32\bin
+    MINGW_32: C:\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin
     MINGW_64: C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin
 
     DECRYPT_KEY_JSON:
@@ -37,12 +38,12 @@ environment:
 
     # See: https://www.appveyor.com/docs/installed-software/#python
 
-    - PYTHON: '3.6-32'
-    - PYTHON: '3.6'
     - PYTHON: '3.7-32'
     - PYTHON: '3.7'
     - PYTHON: '3.8-32'
     - PYTHON: '3.8'
+    - PYTHON: '3.9-32'
+    - PYTHON: '3.9'
 
 install:
   # Fetch submodules
