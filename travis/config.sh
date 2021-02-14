@@ -21,7 +21,8 @@ function pip_opts {
 function pre_build {
     python -m pip install nox
     if [[ -n "${IS_OSX}" ]]; then
-        cd "${TRAVIS_BUILD_DIR}/bezier"
+        # TRAVIS_BUILD_DIR <--> GITHUB_WORKSPACE is the baked in assumption here
+        cd "${GITHUB_WORKSPACE}/bezier"
     else
         # NOTE: `3.13.2` is the last version of `cmake` that supports 32-bit
         #       linux.
@@ -38,7 +39,8 @@ function run_tests {
     echo "python --version:"
     python --version
     if [[ -n "${IS_OSX}" ]]; then
-        BEZIER_TESTS=${TRAVIS_BUILD_DIR}/bezier/tests
+        # TRAVIS_BUILD_DIR <--> GITHUB_WORKSPACE is the baked in assumption here
+        BEZIER_TESTS=${GITHUB_WORKSPACE}/bezier/tests
     else
         # I.e. running on a Docker container
         BEZIER_TESTS=/io/bezier/tests

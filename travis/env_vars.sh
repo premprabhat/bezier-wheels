@@ -12,7 +12,8 @@
 
 export BEZIER_WHEEL=True
 if [[ -n "${IS_OSX}" ]]; then
-    export BEZIER_INSTALL_PREFIX="${TRAVIS_BUILD_DIR}/bezier/.nox/libbezier-release/usr"
+    # TRAVIS_BUILD_DIR <--> GITHUB_WORKSPACE is the baked in assumption here
+    export BEZIER_INSTALL_PREFIX="${GITHUB_WORKSPACE}/bezier/.nox/libbezier-release/usr"
 else
     export BEZIER_INSTALL_PREFIX="/io/bezier/.nox/libbezier-release/usr"
 fi
