@@ -35,7 +35,8 @@ jobs:
           platform: i686
     steps:
     - uses: actions/checkout@v2
-      submodules: 'recursive'
+      with:
+        submodules: 'recursive'
     - name: Install `gcc`
       run: |
         brew install gcc
