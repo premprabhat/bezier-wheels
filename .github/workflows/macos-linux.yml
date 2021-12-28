@@ -35,6 +35,8 @@ jobs:
         exclude:
         - os: macos-latest
           platform: i686
+        - os: macos-latest
+          platform: aarch64
     steps:
     - uses: actions/checkout@v2
       with:
